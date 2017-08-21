@@ -1,0 +1,58 @@
+class Backoffice::UsersController < ApplicationController
+  before_action :set_user, only: [:edit, :update, :destroy]
+
+  def index
+    @users = User.all
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(params_user)
+    if @user.save
+      redirect_to backoffice_users_path, notice: "O administrador #{@user.email} foi cadastrado com sucesso!"
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    senha = params[:user][:password]
+    confirm_senha = params[:user][:password_confirmation]
+
+    if senha.blank? && confirm_senha.blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+
+    if @user.update(params_user)
+      redirect_to backoffice_users_path, notice: "O administrador #{@user.email} foi atualizado!"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @user.delete
+      redirect_to backoffice_users_path, notice: "O administrado #{@user.email} foi apagado!"
+    else
+      render :index
+    end
+  end
+
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def params_user
+    params.require(:user).permit(:email, :password, :password_confirmation, :sex, :role, :name, :cpf, :birth)
+  end
+end
