@@ -10,10 +10,18 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 #Manage Procfile-based applications 
 gem 'foreman'
-
+# layout boostrap para o adm
 gem 'bootstrap_sb_admin_base_v2'
 
 gem 'rails-assets-bootbox', source: 'https://rails-assets.org'
+
+#The Mechanize library is used for automating interaction with websites. Mechanize automatically stores and sends cookies, follows redirects, and can follow links and submit forms. Form fields can be populated and submitted. Mechanize also keeps track of the sites that you have visited as a history.
+gem 'mechanize', '~> 2.7', '>= 2.7.5'
+#selector para o machanize
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+#gem para trabalhar com monetários
+gem 'money-rails'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

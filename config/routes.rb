@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :currencies
   # skip serve para pular a faze de registração do usuário, cadastro só poderão ser feitos dentro do sistema
   devise_for :users, :skip => [:registrations]
   

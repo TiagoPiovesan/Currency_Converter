@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821221825) do
+ActiveRecord::Schema.define(version: 20170823224123) do
+
+  create_table "currencies", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "price_cents", default: 0
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
