@@ -26,3 +26,17 @@ User.all.each do |usuario|
     Phone.create(number: Faker::PhoneNumber.cell_phone, user: usuario)
   end
 end
+
+puts "Cadastrando Clientes"
+100.times do
+  Customer.create!(name: Faker::GameOfThrones.character,cpf: CPF.generate, email: Faker::Internet.email, 
+    sex: [0,1].sample,birth: Faker::Date.birthday(18, 65) )
+end
+puts "Clientes Cadastrados"
+
+
+Customer.all.each do |customer|
+  Random.rand(1..3).times do
+    Phone.create(number: Faker::PhoneNumber.cell_phone, customer: customer)
+  end
+end

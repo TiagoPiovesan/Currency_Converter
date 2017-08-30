@@ -7,6 +7,11 @@ class CurrenciesController < ApplicationController
     @currencies = Currency.all
   end
 
+  def atualizar
+    Search_currency.inicializacao_de_buscas
+    redirect_to currencies_path, notice: "Moedas atualizadas com sucesso!"
+  end
+
   # GET /currencies/1
   # GET /currencies/1.json
   def show

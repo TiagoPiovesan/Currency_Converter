@@ -22,6 +22,10 @@ gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 #gem para trabalhar com monetários
 # usado para fazer formulários alinhados dinamicos
 gem 'cocoon'
+#A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Ruby webapps
+gem 'kaminari'
+# estilizar com bootstrap
+gem 'bootstrap-kaminari-views'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

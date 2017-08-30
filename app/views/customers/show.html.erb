@@ -1,7 +1,7 @@
 <div class="col-xs-12 show-user-panel">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title">Administrador: <%= @user.name %></h3>
+        <h3 class="panel-title">Cliente: <%= @customer.name %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -16,30 +16,26 @@
               <tbody>
                 <tr>
                   <td>Nome:</td>
-                  <td><%= @user.name %></td>
+                  <td><%= @customer.name %></td>
                 </tr>
                 <tr>
                   <td>CPF:</td>
-                  <td><%= @user.cpf %></td>
+                  <td><%= @customer.cpf %></td>
                 </tr>
                 <tr>
                   <td>E-mail:</td>
-                  <td><a href="<%= @user.email %>"><%= @user.email %></td>
+                  <td><a href="<%= @customer.email %>"><%= @customer.email %></td>
                 </tr>
              
                 <tr>
                   <td>Sexo:</td>
-                  <td><%= @user.sex %></td>
+                  <td><%= @customer.sex %></td>
                 </tr>
                   <tr>
                   <td>Data de Nascimento:</td>
-                  <td><%= @user.birth %></td>
+                  <td><%= @customer.birth %></td>
                 </tr>
-                <tr>
-                  <td>Tipo do Acesso:</td>
-                  <td><%= @user.role %></td>
-                </tr>
-                <% @user.phones.each do |phone| %>
+                <% @customer.phones.each do |phone| %>
                   </tr>
                     <td>Telefone</td>
                     <td><%= phone.number %></td>
@@ -48,11 +44,11 @@
                 
                 <tr>
                   <td>Criado em:</td>
-                  <td><%= @user.created_at %></td>
+                  <td><%= @customer.created_at %></td>
                 </tr>
                 <tr>
                   <td>Ultima Alteração:</td>
-                  <td><%= @user.updated_at %></td>
+                  <td><%= @customer.updated_at %></td>
                 </tr>
               </tbody>
             </table>
@@ -64,11 +60,11 @@
          <div class="panel-footer">
               <span class="pull-right">
 
-                  <%= link_to edit_backoffice_user_path(@user), class:"btn btn-sm btn-warning" do %>
+                  <%= link_to edit_customer_path(@customer), class:"btn btn-sm btn-warning" do %>
                       <i class="glyphicon glyphicon-edit"></i>
                   <% end %>
 
-                  <%= link_to backoffice_user_path(@user), :method => 'delete', class:"btn btn-sm btn-danger", data: { confirm: "Tem certeza que deseja apagar <b> #{@user.name} </b> ?" } do %>
+                  <%= link_to customer_path(@customer), :method => 'delete', class:"btn btn-sm btn-danger", data: { confirm: "Tem certeza que deseja apagar <b> #{@customer.name} </b> ?" } do %>
                       <i class="glyphicon glyphicon-remove"></i>
                   <% end %>
               </span>

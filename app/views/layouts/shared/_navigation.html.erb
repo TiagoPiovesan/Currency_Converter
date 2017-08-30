@@ -22,11 +22,12 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#">
+                            <%= link_to backoffice_user_path(current_user) do %> <i class="fa fa-user fa-fw"></i> Perfil <% end %>
                         </li>
                         <li class="divider"></li>
                         <li>
-                        <%= link_to destroy_user_session_path, method: :delete do %> <i class="fa fa-sign-out fa-fw"></i> Sair <% end %>
+                            <%= link_to destroy_user_session_path, method: :delete do %> <i class="fa fa-sign-out fa-fw"></i> Sair <% end %>
                         </a>
                         </li>
                     </ul>
@@ -46,8 +47,11 @@
                             <%= link_to backoffice_users_path do %> <i class="fa fa-users fa-fw"></i> Administradores<% end %>
                         </li>       
                         <li>
-                            <%= link_to currencies_path do %> <i class="fa fa-users fa-fw"></i> Moedas<% end %>
-                        </li>              
+                            <%= link_to currencies_path do %> <i class="fa fa-money fa-fw"></i> Moedas<% end %>
+                        </li>      
+                        <li>
+                            <%= link_to customers_path do %> <i class="fa fa-list fa-fw"></i> Clientes<% end %>
+                        </li>          
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

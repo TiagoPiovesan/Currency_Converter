@@ -1,0 +1,55 @@
+<h1 class="page-header">Clientes</h1>
+
+
+<% if notice %>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <%= notice %>
+    </div>
+<% end -%>
+
+<%= link_to new_customer_path, class:'btn btn-success btn-circle pull-right', style:'margin-top: -5px' do %>
+  <i class="fa fa-plus"></i>
+<% end %>
+
+
+<div class="table-responsive margin_top_button">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Métodos</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= customer.name %></td>
+              <td><%= customer.email %></td>
+
+              <td> 
+                  <%= link_to customer_path(customer), class:"btn btn-primary btn-circle" do %>
+                      <i class="fa fa-eye"></i>
+                  <% end %>
+
+                  <%= link_to edit_customer_path(customer), class:"btn btn-primary btn-circle" do %>
+                      <i class="fa fa-edit"></i>
+                  <% end %>
+
+                  <%= link_to customer_path(customer), :method => 'delete',class:"btn btn-danger btn-circle",
+                   data: { confirm: "Tem certeza que deseja apagar <b> #{customer.name} </b> ?" } do %>
+                    <i class="fa fa-minus"></i>
+                  <% end %>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <center>
+      <%= paginate @customers, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
+    </center>
+</div>
+<!-- /.table-responsive -->

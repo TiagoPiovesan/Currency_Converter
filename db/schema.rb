@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829192504) do
+ActiveRecord::Schema.define(version: 20170830014954) do
 
   create_table "currencies", force: :cascade do |t|
     t.string   "name"
@@ -20,11 +20,22 @@ ActiveRecord::Schema.define(version: 20170829192504) do
     t.decimal  "price",      precision: 6, scale: 6
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "cpf"
+    t.integer  "sex",        default: 0
+    t.date     "birth"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "phones", force: :cascade do |t|
     t.string   "number"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
