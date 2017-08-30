@@ -1,3 +1,10 @@
+<% if notice %>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <%= notice %>
+    </div>
+<% end -%>
+
 <h1>Página inicial</h1>
 
 <%= link_to 'Sair', destroy_user_session_path, :method=>'delete' %>

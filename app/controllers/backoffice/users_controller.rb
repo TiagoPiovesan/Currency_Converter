@@ -12,7 +12,7 @@ class Backoffice::UsersController < ApplicationController
   def create
     @user = User.new(params_user)
     if @user.save
-      redirect_to backoffice_users_path, notice: "O administrador #{@user.email} foi cadastrado com sucesso!"
+      redirect_to backoffice_users_path, notice: "O administrador #{@user.name} foi cadastrado com sucesso!"
     else
       render :new
     end
@@ -31,7 +31,7 @@ class Backoffice::UsersController < ApplicationController
     end
 
     if @user.update(params_user)
-      redirect_to backoffice_users_path, notice: "O administrador #{@user.email} foi atualizado!"
+      redirect_to backoffice_users_path, notice: "O administrador #{@user.name} foi atualizado!"
     else
       render :edit
     end
