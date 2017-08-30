@@ -12,10 +12,17 @@ User.create!(name: 'Tiago Piovesan', cpf: CPF.generate,email: "tiago.piovesan.tp
 puts "Administrador padrão Cadastrado"
 
 
-
 puts "Cadastrando administradores"
 9.times do
   User.create!(name: Faker::GameOfThrones.character,cpf: CPF.generate, email: Faker::Internet.email, 
-    password: "123456", password_confirmation: "123456", sex: [0,1].sample, role: [0,1].sample,birth: Faker::Date.birthday(18, 65) )
+    password: "123456", password_confirmation: "123456", sex: [0,1].sample, role: [0,1].sample,
+    birth: Faker::Date.birthday(18, 65) )
 end
 puts "Administradores Cadastrados"
+
+
+User.all.each do |usuario|
+  Random.rand(1..3).times do
+    Phone.create(number: Faker::PhoneNumber.cell_phone, user: usuario)
+  end
+end

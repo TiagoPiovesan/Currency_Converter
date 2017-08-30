@@ -52,6 +52,19 @@
                                 <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirme a senha' %>
                             </div>
 
+                            <!-- Formulário Complexo --> 
+                            <div id="phones">
+                                <%= f.fields_for :phones do |phones_fields| %>
+                                    <%= render partial: "phone_fields", locals: { f: phones_fields } %>
+                                <% end %>
+                            </div>
+
+                            <div class="col-xs-12">        
+                                  <%= link_to_add_association('Adicionar Telefone', f, :phones) %>
+                            </div>
+
+                            <!-- /Formulário Complexo --> 
+
                             <div class="form-group">
                                 <label>Sexo</label>
                                 <%= f.select :sex, User.sexes.keys, {}, { class: 'form-control' } %>
@@ -67,6 +80,7 @@
 
                             <div class="form-group">
                               <%= f.submit 'Salvar', class: 'btn btn-default' %>
+                              <%= link_to "Voltar", backoffice_users_path, class: "btn btn-default" %>
                             </div>
                         <% end %>
                     </div>

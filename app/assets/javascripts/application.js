@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap_sb_admin_base_v2
 //= require bootbox
+//= require cocoon
 //= require_tree .
 
 
@@ -47,3 +48,4 @@ $.rails.allowAction = function(element) {
 
   return false;
 }
+

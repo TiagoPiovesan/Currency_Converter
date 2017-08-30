@@ -1,3 +1,17 @@
 // Place all the styles related to the backoffice/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.botao-remover{
+  color: #ec1010;
+  margin-top: 32px;
+  font-size: 17px;
+}
+
+
+.show-user-panel{
+  margin-top:20px;
+}
+
+.show-user-panel .panel-footer{
+  padding-bottom: 40px !important;
+}

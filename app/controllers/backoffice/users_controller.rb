@@ -1,5 +1,5 @@
 class Backoffice::UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy, :show]
 
   def index
     @users = User.all
@@ -45,7 +45,9 @@ class Backoffice::UsersController < ApplicationController
     end
   end
 
-
+  def show
+  end
+  
   private
 
   def set_user
@@ -53,6 +55,15 @@ class Backoffice::UsersController < ApplicationController
   end
 
   def params_user
-    params.require(:user).permit(:email, :password, :password_confirmation, :sex, :role, :name, :cpf, :birth)
+    params.require(:user).permit(:email, 
+                                 :password, 
+                                 :password_confirmation, 
+                                 :sex,
+                                 :role, 
+                                 :name, 
+                                 :cpf, 
+                                 :birth,
+                                 phones_attributes: [:id, :number, :_destroy]
+                                )
   end
 end

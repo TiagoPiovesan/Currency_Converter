@@ -20,7 +20,8 @@ gem 'mechanize', '~> 2.7', '>= 2.7.5'
 #selector para o machanize
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 #gem para trabalhar com monetários
-gem 'money-rails'
+# usado para fazer formulários alinhados dinamicos
+gem 'cocoon'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

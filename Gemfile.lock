@@ -47,6 +47,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (2.0.0)
+    cocoon (1.2.10)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -110,15 +111,6 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
-    monetize (1.7.0)
-      money (~> 6.9)
-    money (6.9.0)
-      i18n (>= 0.6.4, < 0.9)
-    money-rails (1.9.0)
-      activesupport (>= 3.0)
-      monetize (~> 1.7.0)
-      money (~> 6.9.0)
-      railties (>= 3.0)
     multi_json (1.12.1)
     net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
@@ -224,6 +216,7 @@ DEPENDENCIES
   bootstrap_sb_admin_base_v2
   byebug
   cancancan
+  cocoon
   coffee-rails (~> 4.1.0)
   cpf_cnpj
   devise
@@ -233,7 +226,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mechanize (~> 2.7, >= 2.7.5)
-  money-rails
   nokogiri (~> 1.6, >= 1.6.8)
   pry (~> 0.10.4)
   rails (= 4.2.5)
