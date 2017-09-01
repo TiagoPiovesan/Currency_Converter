@@ -15,6 +15,10 @@
             <table class="table table-user-information">
               <tbody>
                 <tr>
+                  <td><b>Informações:</b></td>
+                  <td></td>
+                </tr>
+                <tr>
                   <td>Nome:</td>
                   <td><%= @customer.name %></td>
                 </tr>
@@ -26,7 +30,6 @@
                   <td>E-mail:</td>
                   <td><a href="<%= @customer.email %>"><%= @customer.email %></td>
                 </tr>
-             
                 <tr>
                   <td>Sexo:</td>
                   <td><%= @customer.sex %></td>
@@ -35,9 +38,10 @@
                   <td>Data de Nascimento:</td>
                   <td><%= @customer.birth %></td>
                 </tr>
+
                 <% @customer.phones.each do |phone| %>
                   </tr>
-                    <td>Telefone</td>
+                    <td>Telefone:</td>
                     <td><%= phone.number %></td>
                   </tr>
                 <% end %>
@@ -50,7 +54,31 @@
                   <td>Ultima Alteração:</td>
                   <td><%= @customer.updated_at %></td>
                 </tr>
-              </tbody>
+                <tr>
+                  <td><b>Endereço:</b></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Estado:</td>
+                  <td><%= @customer.address.state %></td>
+                </tr>
+                <tr>
+                  <td>Cidade:</td>
+                  <td><%= @customer.address.city %></td>
+                </tr>
+                <tr>
+                  <td>CEP:</td>
+                  <td><%= @customer.address.cep %></td>
+                </tr>
+                <tr>
+                  <td>Rua:</td>
+                  <td><%= @customer.address.street %></td>
+                </tr>
+                <tr>
+                  <td>Numero:</td>
+                  <td><%= @customer.address.number %></td>
+                </tr>
+               </tbody>
             </table>
             
           </div>

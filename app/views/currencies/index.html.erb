@@ -7,12 +7,12 @@
 
 <h1 class="page-header">Lista de moedas
  
-<% if @currencies.all.size > 0 %>
-  <%= button_to atualizar_path, class: 'btn btn-default btn-sm pull-right', style: 'padding: 5px 55px;margin-top: -25px;' do %>
-      <i class="fa fa-refresh fa-spin"></i>  Atualizar
-    <% end %>
-  </h1>
-<% end %>
+  <% if @currencies.all.size > 0 %>
+    <%= button_to atualizar_path, class: 'btn btn-default btn-sm pull-right', style: 'padding: 5px 55px;margin-top: -25px;' do %>
+        <i class="fa fa-refresh fa-spin"></i>  Atualizar
+      <% end %>
+  <% end %>
+</h1>
 
 <% if @currencies.all.size > 0 %>
 <table class="table table-hover">
@@ -39,8 +39,12 @@
 <% else %>
 
 <center>
-  <div class="loader">
-    <span>{</span><span>}</span>
+  <div class="container carregamento">
+    <ul class="bokeh">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
   </div>
   <br>
   <%= link_to currencies_path, class: 'btn btn-default btn-sm', style: 'padding: 5px 200px;' do %>

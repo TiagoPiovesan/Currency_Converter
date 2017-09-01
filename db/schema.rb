@@ -13,6 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20170830014954) do
 
+  create_table "addresses", force: :cascade do |t|
+    t.string   "state"
+    t.string   "city"
+    t.string   "cep"
+    t.string   "street"
+    t.integer  "number"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "currencies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",                         null: false

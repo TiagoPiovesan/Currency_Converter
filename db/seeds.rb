@@ -29,10 +29,24 @@ end
 
 puts "Cadastrando Clientes"
 100.times do
-  Customer.create!(name: Faker::GameOfThrones.character,cpf: CPF.generate, email: Faker::Internet.email, 
-    sex: [0,1].sample,birth: Faker::Date.birthday(18, 65) )
+  Customer.create!(name: Faker::Name.name,cpf: CPF.generate, email: Faker::Internet.email, 
+    sex: [0,1].sample,birth: Faker::Date.birthday(18, 65),  )
 end
 puts "Clientes Cadastrados"
+
+
+puts "Cadastrando Endereços"
+Customer.all.each do |customer|
+  Address.create(
+                city: Faker::Address.city,
+                 number: Faker::Address.building_number,
+                 state: Faker::Address.state,
+                 street: Faker::Address.street_name,
+                 cep: Faker::Address.zip_code,
+                 customer: customer
+           )
+end
+puts "Endereços cadastrandos!"
 
 
 Customer.all.each do |customer|
