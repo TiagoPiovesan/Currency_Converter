@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :buys
   post 'atualizar' => 'currencies#atualizar', as: :atualizar
 
   resources :customers

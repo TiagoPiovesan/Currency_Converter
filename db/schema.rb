@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830014954) do
+ActiveRecord::Schema.define(version: 20170901032913) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "state"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 20170830014954) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "buys", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "customer_id"
+    t.decimal  "value_input"
+    t.decimal  "value_out"
+    t.integer  "currency_input_id"
+    t.integer  "currency_out_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "buys", ["currency_input_id"], name: "index_buys_on_currency_input_id"
+  add_index "buys", ["currency_out_id"], name: "index_buys_on_currency_out_id"
+  add_index "buys", ["customer_id"], name: "index_buys_on_customer_id"
+  add_index "buys", ["user_id"], name: "index_buys_on_user_id"
 
   create_table "currencies", force: :cascade do |t|
     t.string   "name"

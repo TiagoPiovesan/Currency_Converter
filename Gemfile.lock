@@ -50,6 +50,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (2.0.0)
+    choice (0.2.0)
     cocoon (1.2.10)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -162,6 +163,11 @@ GEM
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6)
       rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.5.2)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails-i18n (4.0.9)
@@ -180,6 +186,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    ruby-graphviz (1.2.3)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -247,6 +254,7 @@ DEPENDENCIES
   pry (~> 0.10.4)
   rails (= 4.2.5)
   rails-assets-bootbox!
+  rails-erd
   rails-i18n
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -8,15 +8,13 @@
     </div>
 <% end -%>
 
-<%= link_to new_backoffice_user_path, class:'btn btn-success btn-circle pull-right', style:'margin-top: -5px' do %>
-  <i class="fa fa-plus"></i>
-<% end %>
-
 
 <div class="table-responsive margin_top_button">
     <table class="table table-hover">
         <thead>
             <tr>
+              <%= link_to "<b>+</b> Criar Administrador".html_safe, new_backoffice_user_path, class: "btn btn-primary btn-sm pull-right" %>
+
                 <th>#</th>
                 <th>Nome</th>
                 <th>E-mail</th>

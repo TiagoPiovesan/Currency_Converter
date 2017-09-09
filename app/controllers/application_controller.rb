@@ -4,5 +4,5 @@ class ApplicationController < ActionController::Base
   Search_currency
 
   before_action :authenticate_user!
-
+  
 end

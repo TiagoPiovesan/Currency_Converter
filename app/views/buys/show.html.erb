@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @buy.user %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @buy.customer %>
+</p>
+
+<p>
+  <strong>Input value:</strong>
+  <%= @buy.value_input %>
+</p>
+
+<p>
+  <strong>Out value:</strong>
+  <%= @buy.value_out %>
+</p>
+
+<p>
+  <strong>Currency input:</strong>
+  <%= @currencies.find(@buy.currency_input_id).name %>
+</p>
+
+<p>
+  <strong>Currency out:</strong>
+  <%= @currencies.find(@buy.currency_out_id).name %>
+</p>
+
+<%= link_to 'Edit', edit_buy_path(@buy) %> |
+<%= link_to 'Back', buys_path %>

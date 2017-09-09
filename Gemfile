@@ -70,6 +70,7 @@ group :development do
   gem 'pry', '~> 0.10.4'
   # create exemples datas
   gem 'faker'
+  gem 'rails-erd'
 
   gem "cpf_cnpj"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

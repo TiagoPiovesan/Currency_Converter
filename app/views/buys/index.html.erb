@@ -1,0 +1,72 @@
+<h1 class="page-header">Listando Compras</h1>
+
+<% if notice %>
+    <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <%= notice %>
+    </div>
+<% end -%>
+
+<% if @currencies.all.size > 0 %>
+
+
+  <table class="table table-striped custab">
+    <thead>
+    <%= link_to "<b>+</b> Realizar nova Compra".html_safe, new_buy_path, class: "btn btn-primary btn-sm pull-right" %>
+        <tr>
+            <th>#</th>
+            <th>Atendente</th>
+            <th>Cliente</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Moeda Entrada</th>
+            <th>Moeda Saída</th>
+            <th class="text-center">Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @buys.each do |buy| %>
+            <tr>
+              <td><%= buy.id %></td>
+              <td><%= buy.user.name %></td>
+              <td><%= buy.customer.name %></td>
+              <td>R$ <%= number_with_precision(buy.value_input, precision: 2) %></td>
+              <td>R$ <%= number_with_precision(@currencies.find(buy.currency_out_id).price, precision: 2) %></td>
+              <td><%= @currencies.find(buy.currency_input_id).name %></td>
+              <td><%= @currencies.find(buy.currency_out_id).name %></td>
+              <td class="text-center">
+                <%= link_to buy, class: "btn btn-primary btn-circle" do %>
+                  <i class="fa fa-eye"></i>
+                <% end %>
+
+                <%= link_to edit_buy_path(buy), class: "btn btn-primary btn-circle" do %>
+                  <i class="fa fa-edit"></i>
+                <% end %>
+
+                <%= link_to buy, method: :delete, data: { confirm: 'Você tem certeza?' }, class: "btn btn-danger btn-circle" do %>
+                  <i class="fa fa-minus"></i>
+                <% end %>
+
+              </td>
+            </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% else %>
+
+  <center>
+    <div class="carregamento">
+      <ul class="bokeh">
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
+    </div>
+    <br>
+    <%= link_to buys_path, class: 'btn btn-default btn-sm', style: 'padding: 5px 200px;' do %>
+      Atualizar
+    <% end %>
+  </center>
+
+<% end %>

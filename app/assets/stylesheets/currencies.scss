@@ -7,9 +7,20 @@
 }
 
 .table > tbody > tr > td, .table > tfoot > tr > td{
-  vertical-align: unset;
+    vertical-align: unset;
 }
 
+
+.sub-titulo{
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+}
+
+.sub-titulo > a{
+    font-size: 17px;
+    font-weight: bold;
+}
 
 .carregamento{
   margin: 155px 0;
@@ -19,7 +30,7 @@
 .bokeh {
     border: 0.01em solid rgba(150, 150, 150, 0.1);
     border-radius: 50%;
-    font-size: 130px;
+    font-size: 230px;
     height: 1em;
     list-style: outside none none;
     margin: 0 auto;

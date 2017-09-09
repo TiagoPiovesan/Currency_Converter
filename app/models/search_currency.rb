@@ -3,7 +3,7 @@ class Search_currency
     loop do
       inicializacao_de_buscas
       #TIME em seg...
-      sleep 2000.0
+      sleep 200.0
     end
   end
 
@@ -53,11 +53,13 @@ class Search_currency
   end
 
   def self.adicionar_no_model(name,value)
-    array_length = name.size - 1
-    for i in 0..array_length
+    array_length = name.size
+    for i in 0..array_length -1
       aux = value[i].gsub(',', '.')[2,8]
 
-      Currency.create(name: name[i], price: aux)
-    end    
+      Currency.create(id: i, name: name[i], price: aux)
+    end
+    #adicionando Moeda: Real
+    Currency.create(id: 18, name: "Real", price: "1.000")
   end
 end

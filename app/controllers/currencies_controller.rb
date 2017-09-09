@@ -1,10 +1,11 @@
 class CurrenciesController < ApplicationController
   before_action :set_currency, only: [:show, :destroy]
+  before_action :set_all_currencies, :set_all_price_buy, :set_all_price_sell , only: [:index]
 
   # GET /currencies
   # GET /currencies.json
   def index
-    @currencies = Currency.all
+
   end
 
   def atualizar
@@ -28,6 +29,14 @@ class CurrenciesController < ApplicationController
   end
 
   private
+    # % da Compra
+    Value_in_buy = 1.01741
+    # % do Imposto
+    Value_tax = 1.011
+    # % da Venda
+    Value_in_sell = 1.02862
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_currency
       @currency = Currency.find(params[:id])
@@ -36,5 +45,25 @@ class CurrenciesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def currency_params
       params.require(:currency).permit(:name)
+    end
+
+    def set_all_price_buy
+      @currencies_buy = Currency.all
+      @currencies_buy.each do |currency|
+        currency.price *= Value_in_buy
+        currency.price *= Value_tax
+      end
+    end
+
+    def set_all_price_sell
+      @currencies_sell = Currency.all
+      @currencies_sell.each do |currency|
+        currency.price *= Value_in_sell
+        currency.price *= Value_tax
+      end
+    end
+
+    def set_all_currencies
+      @currencies = Currency.all
     end
 end

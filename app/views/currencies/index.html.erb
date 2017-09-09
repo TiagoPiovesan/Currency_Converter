@@ -5,41 +5,45 @@
     </div>
 <% end -%>
 
-<h1 class="page-header">Lista de moedas
- 
+
+<h1 class="page-header">Lista de Moedas</h1>
+
   <% if @currencies.all.size > 0 %>
-    <%= button_to atualizar_path, class: 'btn btn-default btn-sm pull-right', style: 'padding: 5px 55px;margin-top: -25px;' do %>
-        <i class="fa fa-refresh fa-spin"></i>  Atualizar
-      <% end %>
+
+  <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Mais informações
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#" data-toggle="modal" data-target="#commercial-value">Valor Comercial</a></li>
+      <li><a href="#" data-toggle="modal" data-target="#tax-value">IOF</a></li>
+    </ul>
+  </div>
+
+  <%= button_to atualizar_path, class: 'btn btn-default btn-sm pull-right', style: 'padding: 5px 55px;margin-top: -30px;' do %>
+    <i class="fa fa-refresh fa-spin"></i>  Atualizar
   <% end %>
-</h1>
 
-<% if @currencies.all.size > 0 %>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @currencies.each do |currency| %>
-      <tr>
-        <td><%= currency.id %></td>
-        <td><%= currency.name %></td>
-        <td>R$ <%= currency.price %></td>
-        <td><%= link_to 'Ver', currency, class: 'btn btn-default btn-sm btn-block' %></td>
-        <td><%= link_to 'Apagar', currency, method: :delete, class: 'btn btn-danger btn-sm btn-block', data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+
+<div class="row">
+  <div class="col-xs-6">
+    <h2 class="sub-titulo">Valor Compra <a href="#" data-toggle="popover" data-trigger="hover" title="Lucro" data-content="Compra = 1.741%">%</a></h2>
+
+    <%= render partial: 'table', locals: {currencies: @currencies_buy} %>
+
+  </div>
+  <div class="col-xs-6">
+    <h2 class="sub-titulo">Valor Venda <a href="#" data-toggle="popover" data-trigger="hover" title="Lucro" data-content="Venda = 2.862% ">%</a></h2>
+
+    <%= render partial: 'table', locals: {currencies: @currencies_sell}%>
+
+  </div>
+</div>
 <% else %>
 
 <center>
-  <div class="container carregamento">
+  <div class="carregamento">
     <ul class="bokeh">
         <li></li>
         <li></li>
@@ -53,3 +57,51 @@
 </center>
 
 <% end %>
+
+
+
+<!-- Preço Comercial -->
+<div class="modal fade" id="commercial-value" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Valor Comercial</h4>
+      </div>
+      <div class="modal-body">
+
+        <%= render partial: 'table', locals: {currencies: @currencies}%>          
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Preço Comercial -->
+<div class="modal fade" id="tax-value" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Imposto - IOF</h4>
+      </div>
+      <div class="modal-body">
+
+      <p>Para o câmbio de moeda em espécie existe a cobrança do IOF (Imposto sobre Operações Financeiras) de <b>1,10%</b>. </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+    
+  </div>
+</div>

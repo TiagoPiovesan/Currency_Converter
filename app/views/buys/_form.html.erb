@@ -1,0 +1,81 @@
+<%= form_for @buy, html: {:class => 'form-horizontal'} do |f| %>
+  <fieldset>
+
+    <% if @buy.errors.any? %>
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+            <ul>
+                <% @buy.errors.full_messages.each do |messagem| %>
+                    <li><%= messagem %></li>
+                <% end -%>
+            </ul>
+        </div>
+    <% end %>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic">Atendente</label>
+      <div class="col-md-4">
+      <%= collection_select(:buy, :user_id, @users, :id, :name, {:selected => current_user.name}, { class: "form-control" }) %> 
+      </div>
+    </div>
+
+    <!-- Select Multiple -->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Cliete:</label>
+      <div class="col-md-4">
+      <%= collection_select(:buy, :customer_id, @customers, :id, :name, { prompt: true }, { class: "form-control" })  %> 
+      </div>
+    </div>
+
+    <!-- Prepended text-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="prependedtext">Valor de entrada</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.text_field :value_input, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prepended text-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="prependedtext">Valor saída</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.text_field :value_out, class: "form-control", disabled: "disabled" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic">Moeda entrando</label>
+      <div class="col-md-4">
+      <%= collection_select(:buy, :currency_input_id, @currencies, :id, :name, { prompt: true }, { class: "form-control" })  %> 
+
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic">Moeda de saída</label>
+      <div class="col-md-4">
+      <%= collection_select(:buy, :currency_out_id, @currencies, :id, :name, { prompt: true }, { class: "form-control" })  %> 
+      </div>
+    </div>
+
+    <!-- Button (Double) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-8">
+        <%= f.submit "Enviar", class: "btn btn-success" %>
+        <%= link_to "Cancelar", buys_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+
+  </fieldset>
+<% end %>

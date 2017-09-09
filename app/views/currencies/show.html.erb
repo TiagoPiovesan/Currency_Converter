@@ -5,6 +5,6 @@
   <%= @currency.name %>
 </p>
   <strong>Preço da Moeda:</strong>
-<td>R$ <%= currency.price %></td>
+<td>R$ <%= number_with_precision(@currency.price, precision: 5) %></td>
 
 <%= link_to 'Voltar', currencies_path, class: 'btn btn-primary' %>
