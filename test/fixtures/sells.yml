@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  customer_id: 
+  value_input: 9.99
+  value_out: 9.99
+  currency_input_id: 
+  currency_out_id: 
+
+two:
+  user_id: 
+  customer_id: 
+  value_input: 9.99
+  value_out: 9.99
+  currency_input_id: 
+  currency_out_id: 

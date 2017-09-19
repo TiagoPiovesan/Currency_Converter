@@ -3,7 +3,7 @@ class Customer < ActiveRecord::Base
   enum sex: [:Feminino, :Masculino]
   
   #relações
-  belongs_to :buy
+  has_many :buy
   
   has_many :phones
   has_one :address

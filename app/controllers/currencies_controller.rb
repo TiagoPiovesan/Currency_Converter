@@ -36,7 +36,6 @@ class CurrenciesController < ApplicationController
     # % da Venda
     Value_in_sell = 1.02862
 
-
     # Use callbacks to share common setup or constraints between actions.
     def set_currency
       @currency = Currency.find(params[:id])
@@ -50,7 +49,7 @@ class CurrenciesController < ApplicationController
     def set_all_price_buy
       @currencies_buy = Currency.all
       @currencies_buy.each do |currency|
-        currency.price *= Value_in_buy
+        currency.price /= Value_in_buy
         currency.price *= Value_tax
       end
     end

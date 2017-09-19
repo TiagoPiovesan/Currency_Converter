@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @sell.user %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @sell.customer %>
+</p>
+
+<p>
+  <strong>Value input:</strong>
+  <%= @sell.value_input %>
+</p>
+
+<p>
+  <strong>Value out:</strong>
+  <%= @sell.value_out %>
+</p>
+
+<p>
+  <strong>Currency input:</strong>
+  <%= @sell.currency_input %>
+</p>
+
+<p>
+  <strong>Currency out:</strong>
+  <%= @sell.currency_out %>
+</p>
+
+<%= link_to 'Edit', edit_sell_path(@sell) %> |
+<%= link_to 'Back', sells_path %>

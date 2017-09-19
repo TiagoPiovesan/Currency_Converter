@@ -11,30 +11,31 @@
   <% if @currencies.all.size > 0 %>
 
   <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Mais informações
+    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Mais informações
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
       <li><a href="#" data-toggle="modal" data-target="#commercial-value">Valor Comercial</a></li>
       <li><a href="#" data-toggle="modal" data-target="#tax-value">IOF</a></li>
+      <li><a href="#" data-toggle="modal" data-target="#info">FAQ</a></li>
     </ul>
+
+    <%= button_to atualizar_path, class: 'btn btn-default btn-sm pull-right', style: 'padding: 5px 55px;margin-top: -30px;' do %>
+      <i class="fa fa-refresh fa-spin"></i>  Atualizar
+    <% end %>
+    
   </div>
-
-  <%= button_to atualizar_path, class: 'btn btn-default btn-sm pull-right', style: 'padding: 5px 55px;margin-top: -30px;' do %>
-    <i class="fa fa-refresh fa-spin"></i>  Atualizar
-  <% end %>
-
 
 
 
 <div class="row">
   <div class="col-xs-6">
-    <h2 class="sub-titulo">Valor Compra <a href="#" data-toggle="popover" data-trigger="hover" title="Lucro" data-content="Compra = 1.741%">%</a></h2>
+    <h2 class="sub-titulo">Valor Compra <a href="#" data-toggle="popover" data-trigger="hover" title="Lucro" data-content="Compra = -1.741%"><span class="glyphicon glyphicon-triangle-right"></span></a></h2>
 
     <%= render partial: 'table', locals: {currencies: @currencies_buy} %>
 
   </div>
   <div class="col-xs-6">
-    <h2 class="sub-titulo">Valor Venda <a href="#" data-toggle="popover" data-trigger="hover" title="Lucro" data-content="Venda = 2.862% ">%</a></h2>
+    <h2 class="sub-titulo">Valor Venda <a href="#" data-toggle="popover" data-trigger="hover" title="Lucro" data-content="Venda = 2.862% "><span class="glyphicon glyphicon-triangle-right"></span></a></h2>
 
     <%= render partial: 'table', locals: {currencies: @currencies_sell}%>
 
@@ -83,7 +84,6 @@
   </div>
 </div>
 
-<!-- Preço Comercial -->
 <div class="modal fade" id="tax-value" role="dialog">
   <div class="modal-dialog">
   
@@ -96,6 +96,46 @@
       <div class="modal-body">
 
       <p>Para o câmbio de moeda em espécie existe a cobrança do IOF (Imposto sobre Operações Financeiras) de <b>1,10%</b>. </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="modal fade" id="info" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Calculos</h4>
+      </div>
+      <div class="modal-body">
+
+      <p>VENDA:
+        <b>Preço Comercial + IOF + Lucro de venda = Preço de venda</b>
+      </p>
+
+      <p>COMPRA:
+        <b>Preço Comercial + IOF + Lucro de compra = Preço de compra</b>
+      </p>
+
+      <div class="well">
+        IOF: <b>1.10%</b>
+        <br>
+        <br>
+        Lucro:
+        <br>
+        COMPRA: <b> - 1.741%</b>
+        <br>
+        VENDA: <b>2.862%</b>
+      </div>
+
 
       </div>
       <div class="modal-footer">

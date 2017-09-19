@@ -78,6 +78,14 @@
                   <td>Numero:</td>
                   <td><%= @customer.address.number %></td>
                 </tr>
+                <tr>
+                  <td>Criado em:</td>
+                  <td><%= l(@customer.created_at) %></td>
+                </tr>
+                <tr>
+                  <td>Ultima Alteração:</td>
+                  <td><%= @customer.updated_at.to_formatted_s(:long) %></td>
+                </tr>
                </tbody>
             </table>
             

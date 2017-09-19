@@ -3,7 +3,7 @@ class Search_currency
     loop do
       inicializacao_de_buscas
       #TIME em seg...
-      sleep 200.0
+      sleep 5000.0
     end
   end
 
