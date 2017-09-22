@@ -4,7 +4,11 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all.page(params[:page]).per(25)
+    if params[:search] and params[:search] != ''
+      @customers = Customer.search(params[:search]).page(params[:page]).per(25)
+    else
+      @customers = Customer.all.page(params[:page]).per(25)
+    end
   end
 
   # GET /customers/1

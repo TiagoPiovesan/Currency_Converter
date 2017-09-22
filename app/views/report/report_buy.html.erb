@@ -1,0 +1,74 @@
+<center>
+    <div class="col-xs-12">
+      <div class="form-group busca_formulario">
+        <%= form_tag(report_report_buy_path, method: :get, class: 'form-inline') do %>
+          <%= date_field_tag 'search', @date_to_search, class: 'form-control' %>
+          <%= submit_tag 'Buscar', class: 'btn btn-default' %>
+        <% end %>
+        </div>
+    </div>
+</center>
+
+<div class="container-fluid">
+
+    <!-- Page header -->
+    <div class="page-header">
+        <h2>Linha do tempo de compras</h2>
+    </div>
+    <!-- /Page header -->
+
+    <!-- Timeline -->
+    <div class="timeline">
+    
+        <!-- Line component -->
+        <div class="line text-muted"></div>
+
+        <!-- Separator -->
+        <div class="separator text-muted">
+            <time><%= @date_to_search %></time>
+        </div>
+        <!-- /Separator -->
+    
+        <% @buys.each do |buy| %>
+            <!-- Panel -->
+            <article class="panel panel-primary">
+        
+                <!-- Icon -->
+                <div class="panel-heading icon">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </div>
+                <!-- /Icon -->
+        
+                <!-- Heading -->
+                <div class="panel-heading">
+                    <h2 class="panel-title"><%= buy.user.name %> <i class="fa fa-arrows-h" aria-hidden="true"></i> <%= buy.customer.name %></h2>
+                </div>
+                <!-- /Heading -->
+        
+                <!-- Body -->
+                <div class="panel-body">
+                    Entrada: <b><%= @currencies.find(buy.currency_input_id).name %></b> x Saída: <b><%= @currencies.find(buy.currency_out_id).name %> </b>
+                    <br>
+
+                    R$ <%= number_with_precision(buy.value_input, precision: 2) %> <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                    R$ <%= number_with_precision(buy.value_out, precision: 2) %>
+
+                    <%= link_to "Ver Mais", buy, class: 'btn btn-default btn-sm pull-right' %>
+                </div>
+                <!-- /Body -->
+        
+                <!-- Footer -->
+                <div class="panel-footer">
+                    <small><%= l(buy.created_at)  %></small>
+                </div>
+                <!-- /Footer -->
+            </article>
+    
+        <% end %>
+
+
+    </div>
+    <!-- /Timeline -->
+
+</div>

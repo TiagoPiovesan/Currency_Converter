@@ -25,6 +25,7 @@ class BuysController < ApplicationController
   # POST /buys
   # POST /buys.json
   def create
+    # calculando taxas + percentual
     out_value = calculation_buy
 
     @buy = Buy.new(buy_params)
@@ -44,6 +45,7 @@ class BuysController < ApplicationController
   # PATCH/PUT /buys/1
   # PATCH/PUT /buys/1.json
   def update
+    # calculando taxas + percentual
     out_value = calculation_buy
     @buy.value_out = out_value
 
@@ -78,7 +80,7 @@ class BuysController < ApplicationController
     def set_all_price_buy
       @currencies = Currency.all
       @currencies.each do |currency|
-        currency.price /= Value_in_buy
+        currency.price *= Value_in_buy
         currency.price *= Value_tax
       end
     end
@@ -105,12 +107,12 @@ class BuysController < ApplicationController
       currency_input_id = params[:buy][:currency_input_id]
       currency_out_id = params[:buy][:currency_out_id]
 
+
       currency_input = @currencies.find(currency_input_id).price.to_f
       currency_output = @currencies.find(currency_out_id).price.to_f 
 
-      currency_output /= Value_in_buy
+      currency_output *= Value_in_buy
       currency_output *= Value_tax
-
 
       out_value = (value_input.to_f * currency_input) / currency_output
       out_value

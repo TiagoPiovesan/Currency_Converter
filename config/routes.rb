@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'report/report_sell'
+
+  get 'report/report_buy'
+
   resources :sells
   resources :buys
   post 'atualizar' => 'currencies#atualizar', as: :atualizar

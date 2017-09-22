@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts "Cadastrando administrador padrão"
-User.create!(name: 'Tiago Piovesan', cpf: CPF.generate,email: "tiago.piovesan.tp@gmail.com", 
+User.create!(name: 'Tiago Piovesan', cpf: CPF.generate(true),email: "tiago.piovesan.tp@gmail.com", 
   password: "123456", password_confirmation: "123456", sex: 1, role: 1,birth: '03/09/1996', )
 puts "Administrador padrão Cadastrado"
 
@@ -29,7 +29,7 @@ end
 
 puts "Cadastrando Clientes"
 100.times do
-  Customer.create!(name: Faker::Name.name,cpf: CPF.generate, email: Faker::Internet.email, 
+  Customer.create!(name: Faker::Name.name,cpf: CPF.generate(true), email: Faker::Internet.email, 
     sex: [0,1].sample,birth: Faker::Date.birthday(18, 65),  )
 end
 puts "Clientes Cadastrados"

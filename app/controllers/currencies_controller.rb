@@ -49,7 +49,7 @@ class CurrenciesController < ApplicationController
     def set_all_price_buy
       @currencies_buy = Currency.all
       @currencies_buy.each do |currency|
-        currency.price /= Value_in_buy
+        currency.price *= Value_in_buy
         currency.price *= Value_tax
       end
     end

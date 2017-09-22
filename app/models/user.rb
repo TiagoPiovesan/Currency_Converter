@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   has_many :phones
 
   accepts_nested_attributes_for :phones, reject_if: :all_blank, allow_destroy: true
+
+  validates :name, length: { minimum: 2 }
+  validates :name, :cpf, :sex, presence: true
+
 end

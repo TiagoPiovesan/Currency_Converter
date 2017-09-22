@@ -1,41 +1,81 @@
-<%= form_for(@sell) do |f| %>
-  <% if @sell.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@sell.errors.count, "error") %> prohibited this sell from being saved:</h2>
+<%= form_for @sell, html: {:class => 'form-horizontal'} do |f| %>
+  <fieldset>
 
-      <ul>
-      <% @sell.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <% if @sell.errors.any? %>
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+
+            <ul>
+                <% @sell.errors.full_messages.each do |messagem| %>
+                    <li><%= messagem %></li>
+                <% end -%>
+            </ul>
+        </div>
+    <% end %>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic">Atendente</label>
+      <div class="col-md-4">
+      <%= collection_select(:sell, :user_id, @users, :id, :name, {:selected => current_user.name}, { class: "form-control" }) %> 
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.text_field :customer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :value_input %><br>
-    <%= f.text_field :value_input %>
-  </div>
-  <div class="field">
-    <%= f.label :value_out %><br>
-    <%= f.text_field :value_out %>
-  </div>
-  <div class="field">
-    <%= f.label :currency_input_id %><br>
-    <%= f.text_field :currency_input_id %>
-  </div>
-  <div class="field">
-    <%= f.label :currency_out_id %><br>
-    <%= f.text_field :currency_out_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <!-- Select Multiple -->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Cliete:</label>
+      <div class="col-md-4">
+      <%= collection_select(:sell, :customer_id, @customers, :id, :name, { prompt: true }, { class: "form-control" })  %> 
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic">Moeda entrando</label>
+      <div class="col-md-4">
+      <%= collection_select(:sell, :currency_input_id, @currencies, :id, :name, { prompt: true }, { class: "form-control" })  %> 
+
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic">Moeda de saída</label>
+      <div class="col-md-4">
+      <%= collection_select(:sell, :currency_out_id, @currencies, :id, :name, { prompt: true }, { class: "form-control" })  %> 
+      </div>
+    </div>
+
+    <!-- Prepended text-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="prependedtext">Valor de entrada</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.text_field :value_input, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prepended text-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="prependedtext">Valor saída</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <%= f.text_field :value_out, class: "form-control", disabled: "disabled" %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button (Double) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-8">
+        <%= f.submit "Enviar", class: "btn btn-success" %>
+        <%= link_to "Cancelar", sells_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+
+  </fieldset>
 <% end %>
