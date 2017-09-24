@@ -1,6 +1,6 @@
 class BuysController < ApplicationController
   before_action :set_buy, only: [:show, :edit, :update, :destroy]
-  before_action :set_select_information, only: [:edit, :new]
+  before_action :set_select_information, only: [:edit, :new, :create, :update]
   before_action :set_all_price_buy, only: [:index, :show, :create, :update, :edit, :new]
   # GET /buys
   # GET /buys.json
@@ -25,11 +25,10 @@ class BuysController < ApplicationController
   # POST /buys
   # POST /buys.json
   def create
-    # calculando taxas + percentual
-    out_value = calculation_buy
-
     @buy = Buy.new(buy_params)
-    @buy.value_out = out_value
+    # calculando taxas + percentual
+
+    @buy.value_out = calculation_buy
 
     respond_to do |format|
       if @buy.save
@@ -46,8 +45,7 @@ class BuysController < ApplicationController
   # PATCH/PUT /buys/1.json
   def update
     # calculando taxas + percentual
-    out_value = calculation_buy
-    @buy.value_out = out_value
+    @buy.value_out = calculation_buy
 
     respond_to do |format|
       if @buy.update(buy_params) 
@@ -107,14 +105,17 @@ class BuysController < ApplicationController
       currency_input_id = params[:buy][:currency_input_id]
       currency_out_id = params[:buy][:currency_out_id]
 
+      unless currency_input_id == "" or currency_out_id == ""
 
-      currency_input = @currencies.find(currency_input_id).price.to_f
-      currency_output = @currencies.find(currency_out_id).price.to_f 
+        currency_input = @currencies.find(currency_input_id).price.to_f
+        currency_output = @currencies.find(currency_out_id).price.to_f 
 
-      currency_output *= Value_in_buy
-      currency_output *= Value_tax
+        currency_output *= Value_in_buy
+        currency_output *= Value_tax
 
-      out_value = (value_input.to_f * currency_input) / currency_output
-      out_value
+        out_value = (value_input.to_f * currency_input) / currency_output
+        out_value
+
+      end
     end
 end

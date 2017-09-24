@@ -1,6 +1,6 @@
 class SellsController < ApplicationController
   before_action :set_sell, only: [:show, :edit, :update, :destroy]
-  before_action :set_select_information, only: [:edit, :new]
+  before_action :set_select_information, only: [:edit, :new, :create, :update]
   before_action :set_currency, only: [:index, :edit, :new, :show]
   before_action :set_all_price_sell, only: [:index, :show, :create, :update, :edit, :new]
 
@@ -114,13 +114,16 @@ class SellsController < ApplicationController
       currency_input_id = params[:sell][:currency_input_id]
       currency_out_id = params[:sell][:currency_out_id]
 
-      currency_input = @currencies.find(currency_input_id).price.to_f
-      currency_output = @currencies.find(currency_out_id).price.to_f 
+      unless currency_input_id == "" or currency_out_id == ""
 
-      currency_output *= Value_in_sell
-      currency_output *= Value_tax
+        currency_input = @currencies.find(currency_input_id).price.to_f
+        currency_output = @currencies.find(currency_out_id).price.to_f 
 
-      out_value = (value_input.to_f * currency_input) / currency_output
-      out_value
+        currency_output *= Value_in_sell
+        currency_output *= Value_tax
+
+        out_value = (value_input.to_f * currency_input) / currency_output
+        out_value
+      end
     end
 end
