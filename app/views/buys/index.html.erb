@@ -8,8 +8,6 @@
 <% end -%>
 
 <% if @currencies.all.size > 0 %>
-
-
   <table class="table table-striped custab">
     <thead>
     <%= link_to "<b>+</b> Realizar nova Compra".html_safe, new_buy_path, class: "btn btn-primary btn-sm pull-right" %>
@@ -52,7 +50,6 @@
       <% end %>
     </tbody>
   </table>
-
 <% else %>
 
   <center>

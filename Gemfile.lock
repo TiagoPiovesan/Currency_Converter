@@ -49,7 +49,6 @@ GEM
       jquery-rails
     builder (3.2.3)
     byebug (9.0.6)
-    cancancan (2.0.0)
     choice (0.2.0)
     cocoon (1.2.10)
     coderay (1.1.1)
@@ -138,6 +137,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (1.6.8)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -238,7 +239,6 @@ DEPENDENCIES
   bootstrap-kaminari-views
   bootstrap_sb_admin_base_v2
   byebug
-  cancancan
   cocoon
   coffee-rails (~> 4.1.0)
   cpf_cnpj
@@ -252,6 +252,7 @@ DEPENDENCIES
   mechanize (~> 2.7, >= 2.7.5)
   nokogiri (~> 1.6, >= 1.6.8)
   pry (~> 0.10.4)
+  pundit
   rails (= 4.2.5)
   rails-assets-bootbox!
   rails-erd
@@ -264,4 +265,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

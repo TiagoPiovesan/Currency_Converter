@@ -7,6 +7,7 @@ class Backoffice::UsersController < ApplicationController
 
   def new
     @user = User.new
+    authorize @user
   end
 
   def create
@@ -19,6 +20,7 @@ class Backoffice::UsersController < ApplicationController
   end
 
   def edit
+    authorize @user
   end
 
   def update

@@ -2,6 +2,7 @@ class CurrenciesController < ApplicationController
   before_action :set_currency, only: [:show, :destroy]
   before_action :set_all_currencies, :set_all_price_buy, :set_all_price_sell , only: [:index]
 
+
   # GET /currencies
   # GET /currencies.json
   def index

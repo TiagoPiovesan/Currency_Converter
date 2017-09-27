@@ -1,7 +1,7 @@
 class ReportController < ApplicationController
-  before_action :set_currency
   before_action :set_sell, only: [:report_sell]
   before_action :set_buy, only: [:report_buy]
+  before_action :set_currencies
 
   def report_sell
     @date_to_search = param_search
@@ -36,7 +36,7 @@ class ReportController < ApplicationController
     @buys = Buy.all
   end
 
-  def set_currency
+  def set_currencies
     @currencies = Currency.all
   end
 end

@@ -9,66 +9,88 @@
     </div>
 </center>
 
-<div class="container-fluid">
-
-    <!-- Page header -->
-    <div class="page-header">
-        <h2>Linha do tempo de compras</h2>
-    </div>
-    <!-- /Page header -->
-
-    <!-- Timeline -->
-    <div class="timeline">
     
-        <!-- Line component -->
-        <div class="line text-muted"></div>
+<% if @currencies.all.size > 0 %>
 
-        <!-- Separator -->
-        <div class="separator text-muted">
-            <time><%= @date_to_search %></time>
+    <div class="container-fluid">
+
+        <!-- Page header -->
+        <div class="page-header">
+            <h2>Linha do tempo de compras</h2>
         </div>
-        <!-- /Separator -->
-    
-        <% @buys.each do |buy| %>
-            <!-- Panel -->
-            <article class="panel panel-primary">
-        
-                <!-- Icon -->
-                <div class="panel-heading icon">
-                    <i class="glyphicon glyphicon-plus"></i>
-                </div>
-                <!-- /Icon -->
-        
-                <!-- Heading -->
-                <div class="panel-heading">
-                    <h2 class="panel-title"><%= buy.user.name %> <i class="fa fa-arrows-h" aria-hidden="true"></i> <%= buy.customer.name %></h2>
-                </div>
-                <!-- /Heading -->
-        
-                <!-- Body -->
-                <div class="panel-body">
-                    Entrada: <b><%= @currencies.find(buy.currency_input_id).name %></b> x Saída: <b><%= @currencies.find(buy.currency_out_id).name %> </b>
-                    <br>
+        <!-- /Page header -->
 
-                    R$ <%= number_with_precision(buy.value_input, precision: 2) %> <i class="fa fa-arrow-right" aria-hidden="true"></i>
-
-                    R$ <%= number_with_precision(buy.value_out, precision: 2) %>
-
-                    <%= link_to "Ver Mais", buy, class: 'btn btn-default btn-sm pull-right' %>
-                </div>
-                <!-- /Body -->
+        <!-- Timeline -->
+        <div class="timeline">
         
-                <!-- Footer -->
-                <div class="panel-footer">
-                    <small><%= l(buy.created_at)  %></small>
-                </div>
-                <!-- /Footer -->
-            </article>
-    
-        <% end %>
+            <!-- Line component -->
+            <div class="line text-muted"></div>
 
+            <!-- Separator -->
+            <div class="separator text-muted">
+                <time><%= @date_to_search %></time>
+            </div>
+            <!-- /Separator -->
+        
+            <% @buys.each do |buy| %>
+                <!-- Panel -->
+                <article class="panel panel-primary">
+            
+                    <!-- Icon -->
+                    <div class="panel-heading icon">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </div>
+                    <!-- /Icon -->
+            
+                    <!-- Heading -->
+                    <div class="panel-heading">
+                        <h2 class="panel-title"><%= buy.user.name %> <i class="fa fa-arrows-h" aria-hidden="true"></i> <%= buy.customer.name %></h2>
+                    </div>
+                    <!-- /Heading -->
+            
+                    <!-- Body -->
+                    <div class="panel-body">
+                        Entrada: <b><%= @currencies.find(buy.currency_input_id).name %></b> x Saída: <b><%= @currencies.find(buy.currency_out_id).name %> </b>
+                        <br>
+
+                        R$ <%= number_with_precision(buy.value_input, precision: 2) %> <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                        R$ <%= number_with_precision(buy.value_out, precision: 2) %>
+
+                        <%= link_to "Ver Mais", buy, class: 'btn btn-default btn-sm pull-right' %>
+                    </div>
+                    <!-- /Body -->
+            
+                    <!-- Footer -->
+                    <div class="panel-footer">
+                        <small><%= l(buy.created_at)  %></small>
+                    </div>
+                    <!-- /Footer -->
+                </article>
+        
+            <% end %>
+
+
+        </div>
+        <!-- /Timeline -->
 
     </div>
-    <!-- /Timeline -->
 
-</div>
+
+  <% else %>
+
+  <center>
+    <div class="carregamento">
+      <ul class="bokeh">
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
+    </div>
+    <br>
+    <%= link_to report_report_buy_path, class: 'btn btn-default btn-sm', style: 'padding: 5px 200px;' do %>
+      Atualizar
+    <% end %>
+  </center>
+
+<% end %> 

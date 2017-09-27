@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Autorização
 gem 'devise'
 # Permissão
-gem 'cancancan'
+gem 'pundit'
 # Tradução
 gem 'rails-i18n'
 #Translations for the devise gem
