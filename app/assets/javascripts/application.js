@@ -15,7 +15,9 @@
 //= require bootstrap_sb_admin_base_v2
 //= require bootbox
 //= require cocoon
+//= require bootstrap.growl
 //= require_tree .
+
 
 
 //Sobrescreve data-confirm do Rails

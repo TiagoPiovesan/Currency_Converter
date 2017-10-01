@@ -28,6 +28,14 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 
+source 'https://rails-assets.org' do
+  #bootstrap growl
+  gem 'rails-assets-bootstrap.growl'
+  #Animate CSS
+  gem 'rails-assets-animate-css'
+end
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record

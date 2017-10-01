@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
+  before_action :set_currencies
   # permissão pundit
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protect_from_forgery with: :exception
 
+  @currencies = Currency.all
+
   Search_currency
+
 
 # autorização devise
   before_action :authenticate_user!
@@ -27,5 +31,8 @@ class ApplicationController < ActionController::Base
       end
     end
 
-  
+    def set_currencies
+      @currencies = Currency.all
+    end
+    
 end

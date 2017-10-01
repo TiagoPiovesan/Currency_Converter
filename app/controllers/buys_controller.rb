@@ -2,7 +2,6 @@ class BuysController < ApplicationController
   before_action :set_buy, only: [:show, :edit, :update, :destroy]
   before_action :set_select_information, only: [:edit, :new, :create, :update]
   before_action :set_all_price_buy, only: [:index, :show, :create, :update, :edit, :new]
-  before_action :set_currencies
   
   
   # GET /buys
@@ -95,10 +94,6 @@ class BuysController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_buy
       @buy = Buy.find(params[:id])
-    end
-
-    def set_currencies
-      @currencies = Currency.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

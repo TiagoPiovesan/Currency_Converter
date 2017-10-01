@@ -2,17 +2,8 @@
   <h1 class="page-header"><%= action %></h1>
 </div>
 
-<% if @customer.errors.any? %>
-    <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+<%= render partial: 'layouts/shared/notification_error', locals: { modelo: @customer } %>
 
-        <ul>
-            <% @customer.errors.full_messages.each do |messagem| %>
-                <li><%= messagem %></li>
-            <% end -%>
-        </ul>
-    </div>
-<% end %>
 
 <div class="row">
     <div class="col-lg-12">

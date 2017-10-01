@@ -93,8 +93,30 @@
         <div id="page-wrapper">
             <div class="container-fluid">
 
+            <%= render partial: 'layouts/shared/notification' %>
+
+            <% if @currencies.size > 0 %>
+
                 <%= yield %>
 
+            <% else %>
+
+              <center>
+                <div class="carregamento">
+                  <ul class="bokeh">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                  </ul>
+                </div>
+                <br>
+                <%= link_to buys_path, class: 'btn btn-default btn-sm', style: 'padding: 5px 200px;' do %>
+                  Atualizar
+                <% end %>
+              </center>
+
+            <% end %>
+            
             </div>
             <!-- /.container-fluid -->
         </div>

@@ -1,131 +1,112 @@
-<% if @currencies.all.size > 0 %>
 
-  <div class="col-xs-9 show-user-panel" >
-    <div class="panel panel-success">
-      <div class="panel-heading">
-        <h3 class="panel-title">Compra realizada por: <%= @buy.customer.name %></h3>
-      </div>
-      <div class="panel-body">
-        <div class="row">
+<div class="col-xs-9 show-user-panel" >
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Compra realizada por: <%= @buy.customer.name %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
 
-          <div class="col-xs-12 "> 
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td><span class="glyphicon glyphicon-arrow-right"></span> Administrador:</td>
-                  <td><%= @buy.user.name %></td>
-                </tr>
+        <div class="col-xs-12 "> 
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><span class="glyphicon glyphicon-arrow-right"></span> Administrador:</td>
+                <td><%= @buy.user.name %></td>
+              </tr>
 
+              <tr>
+                <td><span class="glyphicon glyphicon-arrow-right"></span> Cliente:</td>
+                <td><%= @buy.customer.name %></td>
+              </tr>
+              <tr>
+                <td>CPF:</td>
+                <td><%= @buy.customer.cpf %></td>
+              </tr>
+              <tr>
+                <td>E-mail:</td>
+                <td><a href="<%= @buy.customer.email %>"><%= @buy.customer.email %></td>
+              </tr>
+              <tr>
+                <td>Sexo:</td>
+                <td><%= @buy.customer.sex %></td>
+              </tr>
                 <tr>
-                  <td><span class="glyphicon glyphicon-arrow-right"></span> Cliente:</td>
-                  <td><%= @buy.customer.name %></td>
-                </tr>
-                <tr>
-                  <td>CPF:</td>
-                  <td><%= @buy.customer.cpf %></td>
-                </tr>
-                <tr>
-                  <td>E-mail:</td>
-                  <td><a href="<%= @buy.customer.email %>"><%= @buy.customer.email %></td>
-                </tr>
-                <tr>
-                  <td>Sexo:</td>
-                  <td><%= @buy.customer.sex %></td>
-                </tr>
-                  <tr>
-                  <td>Data de Nascimento:</td>
-                  <td><%= @buy.customer.birth %></td>
-                </tr>
+                <td>Data de Nascimento:</td>
+                <td><%= @buy.customer.birth %></td>
+              </tr>
 
-                <% @buy.customer.phones.each do |phone| %>
-                  </tr>
-                    <td>Telefone:</td>
-                    <td><%= phone.number %></td>
-                  </tr>
-                <% end %>
+              <% @buy.customer.phones.each do |phone| %>
+                </tr>
+                  <td>Telefone:</td>
+                  <td><%= phone.number %></td>
+                </tr>
+              <% end %>
 
-                <tr>
-                  <td><span class="glyphicon glyphicon-arrow-right"></span> Moeda de entrada:</td>
-                  <td><%= @currencies.find(@buy.currency_input_id).name %></td>
-                </tr>
-                <tr>
-                <tr>
-                  <td><span class="glyphicon glyphicon-arrow-right"></span> Valor de entrada:</td>
-                  <td>
-                    <b>
-                      <%= number_with_precision(@buy.value_input, precision: 2) %>
-                    </b>
-                  </td>
-                </tr>
+              <tr>
+                <td><span class="glyphicon glyphicon-arrow-right"></span> Moeda de entrada:</td>
+                <td><%= @currencies.find(@buy.currency_input_id).name %></td>
+              </tr>
+              <tr>
+              <tr>
+                <td><span class="glyphicon glyphicon-arrow-right"></span> Valor de entrada:</td>
+                <td>
+                  <b>
+                    <%= number_with_precision(@buy.value_input, precision: 2) %>
+                  </b>
+                </td>
+              </tr>
 
-                </tr>
-                  <td>Preço: </td>
-                  <td><%= number_with_precision(@currencies.find(@buy.currency_input_id).price, precision: 4) %>
-                </tr>
+              </tr>
+                <td>Preço: </td>
+                <td><%= number_with_precision(@currencies.find(@buy.currency_input_id).price, precision: 4) %>
+              </tr>
 
-                <tr>
-                  <td><span class="glyphicon glyphicon-arrow-right"></span> Moeda de Saída:</td>
-                  <td><%= @currencies.find(@buy.currency_out_id).name %></td>
-                </tr>
+              <tr>
+                <td><span class="glyphicon glyphicon-arrow-right"></span> Moeda de Saída:</td>
+                <td><%= @currencies.find(@buy.currency_out_id).name %></td>
+              </tr>
 
-                <tr>
-                  <td><span class="glyphicon glyphicon-arrow-right"></span> Valor de Saída:</td>
-                  <td>
-                    <b>
-                      <%= number_with_precision(@buy.value_out, precision: 2) %>
-                    </b>
-                  </td>
-                </tr>
+              <tr>
+                <td><span class="glyphicon glyphicon-arrow-right"></span> Valor de Saída:</td>
+                <td>
+                  <b>
+                    <%= number_with_precision(@buy.value_out, precision: 2) %>
+                  </b>
+                </td>
+              </tr>
 
-                <tr>
-                  <td>Preço: </td>
-                  <td><%= number_with_precision(@currencies.find(@buy.currency_out_id).price, precision: 4) %> <b>+</b> TAXA <b>+</b> IOF</td>
-                </tr>
-                
-                <tr>
-                  <td>Criado em:</td>
-                  <td><%= l(@buy.created_at) %></td>
-                </tr>
-                <tr>
-                  <td>Ultima Alteração:</td>
-                  <td><%= l(@buy.updated_at) %></td>
-                </tr>
-              </tbody>
-            </table>
-            
-          </div>
+              <tr>
+                <td>Preço: </td>
+                <td><%= number_with_precision(@currencies.find(@buy.currency_out_id).price, precision: 4) %> <b>+</b> TAXA <b>+</b> IOF</td>
+              </tr>
+              
+              <tr>
+                <td>Criado em:</td>
+                <td><%= l(@buy.created_at) %></td>
+              </tr>
+              <tr>
+                <td>Ultima Alteração:</td>
+                <td><%= l(@buy.updated_at) %></td>
+              </tr>
+            </tbody>
+          </table>
+          
         </div>
       </div>
-
-         <div class="panel-footer">
-              <span class="pull-right">
-
-                  <%= link_to edit_buy_path(@buy), class:"btn btn-sm btn-warning" do %>
-                      <i class="glyphicon glyphicon-edit"></i>
-                  <% end %>
-
-                  <%= link_to buys_path(@user), :method => 'delete', class:"btn btn-sm btn-danger", data: { confirm: "Tem certeza que deseja apagar essa operação ?" } do %>
-                      <i class="glyphicon glyphicon-remove"></i>
-                  <% end %>
-              </span>
-          </div>
     </div>
+
+       <div class="panel-footer">
+            <span class="pull-right">
+
+                <%= link_to edit_buy_path(@buy), class:"btn btn-sm btn-warning" do %>
+                    <i class="glyphicon glyphicon-edit"></i>
+                <% end %>
+
+                <%= link_to buys_path(@user), :method => 'delete', class:"btn btn-sm btn-danger", data: { confirm: "Tem certeza que deseja apagar essa operação ?" } do %>
+                    <i class="glyphicon glyphicon-remove"></i>
+                <% end %>
+            </span>
+        </div>
   </div>
-
-  <% else %>
-
-  <center>
-    <div class="carregamento">
-      <ul class="bokeh">
-          <li></li>
-          <li></li>
-          <li></li>
-      </ul>
-    </div>
-    <br>
-    <%= link_to buys_path, class: 'btn btn-default btn-sm', style: 'padding: 5px 200px;' do %>
-      Atualizar
-    <% end %>
-  </center>
-
-<% end %> 
+</div>

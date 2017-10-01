@@ -1,7 +1,6 @@
 class SellsController < ApplicationController
   before_action :set_sell, only: [:show, :edit, :update, :destroy]
   before_action :set_select_information, only: [:edit, :new, :create, :update]
-  before_action :set_currency, only: [:index, :edit, :new, :show]
   before_action :set_all_price_sell, only: [:index, :show, :create, :update, :edit, :new]
 
 
@@ -97,11 +96,6 @@ class SellsController < ApplicationController
     def set_select_information
       @users = User.all
       @customers = Customer.all
-    end
-
-
-    def set_currency
-      @currencies = Currency.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
