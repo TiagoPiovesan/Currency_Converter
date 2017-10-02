@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 20170918234914) do
     t.string   "city"
     t.string   "zipcode"
     t.string   "street"
+    t.string   "neighborhood"
     t.integer  "number"
     t.integer  "customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "buys", force: :cascade do |t|

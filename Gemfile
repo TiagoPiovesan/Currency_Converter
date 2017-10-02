@@ -27,7 +27,6 @@ gem 'kaminari'
 # estilizar com bootstrap
 gem 'bootstrap-kaminari-views'
 
-
 source 'https://rails-assets.org' do
   #bootstrap growl
   gem 'rails-assets-bootstrap.growl'

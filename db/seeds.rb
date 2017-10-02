@@ -41,6 +41,7 @@ Customer.all.each do |customer|
                 city: Faker::Address.city,
                  number: Faker::Address.building_number,
                  state: Faker::Address.state,
+                 neighborhood: Faker::Address.community,
                  street: Faker::Address.street_name,
                  zipcode: Faker::Address.zip_code,
                  customer: customer

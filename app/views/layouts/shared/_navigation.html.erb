@@ -31,6 +31,9 @@
                         <li>
                             <%= link_to destroy_user_session_path, method: :delete do %> <i class="fa fa-sign-out fa-fw"></i> Sair <% end %>
                         </a>
+                        <li>
+                            <a href="https://www.cotacao.com.br/cotacao-das-moedas.html">Fonte</a>
+                        </li>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -112,9 +115,10 @@
                   </ul>
                 </div>
                 <br>
-                <%= link_to buys_path, class: 'btn btn-default btn-sm', style: 'padding: 5px 200px;' do %>
-                  Atualizar
-                <% end %>
+
+                <%=javascript_tag "setTimeout(function(){ window.location.reload(); }, 20000);" %>
+
+
               </center>
 
             <% end %>
