@@ -20,3 +20,11 @@
 .busca_formulario{
     margin-top: 30px;
 }
+
+
+@media only screen and (max-width: 768px){
+
+  .email-navbar{
+    text-align: center;
+  }
+}

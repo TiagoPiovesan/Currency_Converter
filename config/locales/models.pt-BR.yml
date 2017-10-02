@@ -4,6 +4,12 @@
       sell:
         one: Venda
         other: Vendas 
+      user:
+        one: Administrador
+        one: Administradores
+      customer:
+        one: Venda
+        other: Vendas 
       buy:
         one: Compra
         other: Compras
@@ -27,3 +33,12 @@
         currency_out: Moeda Saída
         customer: Cliente
         user_id: Atendente
+      customer:
+        name: Nome
+        email: E-mail
+        cpf: CPF
+        birth: Data de Nascimento
+      user:
+        name: Nome
+        email: E-mail
+        birth: Data de Nascimento

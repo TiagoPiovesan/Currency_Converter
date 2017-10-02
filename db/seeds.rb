@@ -42,7 +42,7 @@ Customer.all.each do |customer|
                  number: Faker::Address.building_number,
                  state: Faker::Address.state,
                  street: Faker::Address.street_name,
-                 cep: Faker::Address.zip_code,
+                 zipcode: Faker::Address.zip_code,
                  customer: customer
            )
 end

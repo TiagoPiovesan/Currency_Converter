@@ -1,4 +1,5 @@
 class Search_currency
+
   Thread.new do
     loop do
       inicializacao_de_buscas

@@ -1,10 +1,14 @@
-<h1 class="page-header">Clientes</h1>
-
-<%= form_tag(customers_path, method: :get, class: 'form-inline') do %>
-  <%= text_field_tag 'search', nil, placeholder: 'Nome...', class: 'form-control' %>
-  <%= submit_tag 'Buscar', class: 'btn btn-default' %>
-<% end %>
-
+<div class="row">
+<div class="col-xs-12 col-sm-8">
+  <h1 class="page-header">Clientes</h1>
+</div>
+<div class="col-xs-12 col-sm-4">
+  <%= form_tag(customers_path, method: :get, class: 'form-inline alinhamento-busca') do %>
+    <%= text_field_tag 'search', nil, placeholder: 'Nome...', class: 'form-control' %>
+    <%= submit_tag 'Buscar', class: 'btn btn-default' %>
+  <% end %>
+</div>
+</div>
 
 <div class="table-responsive margin_top_button">
     <table class="table table-hover">
