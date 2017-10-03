@@ -1,0 +1,80 @@
+<% if @currencies.all.size > 0 %>
+
+    <div class="container-fluid">
+
+        <!-- Page header -->
+        <div class="page-header">
+            <h2>Linha do tempo de <%= action %></h2>
+        </div>
+        <!-- /Page header -->
+
+        <!-- Timeline -->
+        <div class="timeline">
+        
+            <!-- Line component -->
+            <div class="line text-muted"></div>
+
+            <!-- Separator -->
+            <div class="separator text-muted">
+                <time><%= date_to_search %></time>
+            </div>
+            <!-- /Separator -->
+        
+            <% type.each do |type| %>
+                <!-- Panel -->
+                <article class="panel panel-primary">
+            
+                    <!-- Icon -->
+                    <div class="panel-heading icon">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </div>
+                    <!-- /Icon -->
+            
+                    <!-- Heading -->
+                    <div class="panel-heading">
+                        <h2 class="panel-title"><%= type.user.name %> <i class="fa fa-arrows-h" aria-hidden="true"></i> <%= type.customer.name %></h2>
+                    </div>
+                    <!-- /Heading -->
+            
+                    <!-- Body -->
+                    <div class="panel-body">
+                        Entrada: <b><%= @currencies.find(type.currency_input_id).name %></b> x Saída: <b><%= @currencies.find(type.currency_out_id).name %> </b>
+                        <br>
+
+                        R$ <%= number_with_precision(type.value_input, precision: 2) %> <i class="fa fa-arrow-right" aria-hidden="true"></i>
+
+                        R$ <%= number_with_precision(type.value_out, precision: 2) %>
+
+                        <%= link_to "Ver Mais", type, class: 'btn btn-default btn-sm pull-right' %>
+                    </div>
+                    <!-- /Body -->
+            
+                    <!-- Footer -->
+                    <div class="panel-footer">
+                        <small><%= l(type.created_at)  %></small>
+                    </div>
+                    <!-- /Footer -->
+                </article>
+        
+            <% end %>
+
+
+        </div>
+        <!-- /Timeline -->
+
+    </div>
+
+
+  <% else %>
+
+  <center>
+    <div class="carregamento">
+      <ul class="bokeh">
+          <li></li>
+          <li></li>
+          <li></li>
+      </ul>
+    </div>
+  </center>
+
+<% end %> 

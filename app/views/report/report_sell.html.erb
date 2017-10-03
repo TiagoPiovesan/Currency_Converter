@@ -2,6 +2,7 @@
     <div class="col-xs-12">
       <div class="form-group busca_formulario">
         <%= form_tag(report_report_sell_path, method: :get, class: 'form-inline') do %>
+          <label>Data:</label>
           <%= date_field_tag 'search', @date_to_search, class: 'form-control' %>
           <%= submit_tag 'Buscar', class: 'btn btn-default' %>
         <% end %>
@@ -9,87 +10,4 @@
     </div>
 </center>
 
-<% if @currencies.all.size > 0 %>
-
-
-    <div class="container-fluid">
-
-        <!-- Page header -->
-        <div class="page-header">
-            <h2>Linha do tempo de vendas</h2>
-        </div>
-        <!-- /Page header -->
-
-        <!-- Timeline -->
-        <div class="timeline">
-        
-            <!-- Line component -->
-            <div class="line text-muted"></div>
-
-            <!-- Separator -->
-            <div class="separator text-muted">
-                <time><%= @date_to_search %></time>
-            </div>
-            <!-- /Separator -->
-        
-            <% @sells.each do |sell| %>
-                <!-- Panel -->
-                <article class="panel panel-primary">
-            
-                    <!-- Icon -->
-                    <div class="panel-heading icon">
-                        <i class="glyphicon glyphicon-plus"></i>
-                    </div>
-                    <!-- /Icon -->
-            
-                    <!-- Heading -->
-                    <div class="panel-heading">
-                        <h2 class="panel-title"><%= sell.user.name %> <i class="fa fa-arrows-h" aria-hidden="true"></i> <%= sell.customer.name %></h2>
-                    </div>
-                    <!-- /Heading -->
-            
-                    <!-- Body -->
-                    <div class="panel-body">
-                        Entrada: <b><%= @currencies.find(sell.currency_input_id).name %></b> x Saída: <b><%= @currencies.find(sell.currency_out_id).name %> </b>
-                        <br>
-
-                        R$ <%= number_with_precision(sell.value_input, precision: 2) %> <i class="fa fa-arrow-right" aria-hidden="true"></i>
-
-                        R$ <%= number_with_precision(sell.value_out, precision: 2) %>
-
-                        <%= link_to "Ver Mais", sell, class: 'btn btn-default btn-sm pull-right' %>
-                    </div>
-                    <!-- /Body -->
-            
-                    <!-- Footer -->
-                    <div class="panel-footer">
-                        <small><%= l(sell.created_at)  %></small>
-                    </div>
-                    <!-- /Footer -->
-                </article>
-        
-            <% end %>
-
-
-        </div>
-        <!-- /Timeline -->
-
-    </div>
-
-  <% else %>
-
-  <center>
-    <div class="carregamento">
-      <ul class="bokeh">
-          <li></li>
-          <li></li>
-          <li></li>
-      </ul>
-    </div>
-    <br>
-    <%= link_to report_report_sell_path, class: 'btn btn-default btn-sm', style: 'padding: 5px 200px;' do %>
-      Atualizar
-    <% end %>
-  </center>
-
-<% end %> 
+<%= render partial: 'report/shared/timeline', locals: {date_to_search: @date_to_search, type: @sells, action: 'Vendas' } %>

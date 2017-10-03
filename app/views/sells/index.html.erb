@@ -2,7 +2,6 @@
 
 <% if @currencies.all.size > 0 %>
 
-
   <table class="table table-striped custab">
     <thead>
     <%= link_to "<b>+</b> Realizar nova Venda".html_safe, new_sell_path, class: "btn btn-primary btn-sm pull-right" %>
@@ -56,10 +55,6 @@
           <li></li>
       </ul>
     </div>
-    <br>
-    <%= link_to sells_path, class: 'btn btn-default btn-sm', style: 'padding: 5px 200px;' do %>
-      Atualizar
-    <% end %>
   </center>
 
 <% end %>

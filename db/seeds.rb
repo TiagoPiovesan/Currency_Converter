@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 puts "Cadastrando administrador padrão"
 User.create!(name: 'Tiago Piovesan', cpf: CPF.generate(true),email: "tiago.piovesan.tp@gmail.com", 
   password: "123456", password_confirmation: "123456", sex: 1, role: 1,birth: '03/09/1996', )
@@ -13,7 +5,7 @@ puts "Administrador padrão Cadastrado"
 
 
 puts "Cadastrando administradores"
-9.times do
+3.times do
   User.create!(name: Faker::GameOfThrones.character,cpf: CPF.generate, email: Faker::Internet.email, 
     password: "123456", password_confirmation: "123456", sex: [0,1].sample, role: [0,1].sample,
     birth: Faker::Date.birthday(18, 65) )
@@ -49,9 +41,28 @@ Customer.all.each do |customer|
 end
 puts "Endereços cadastrandos!"
 
-
+puts "Cadastrando telefone"
 Customer.all.each do |customer|
   Random.rand(1..3).times do
     Phone.create(number: Faker::PhoneNumber.cell_phone, customer: customer)
   end
 end
+puts "Telefone Cadastrado"
+
+
+puts "Cadastrando Compras"
+150.times do
+  Buy.create!(user: User.all.sample,customer: Customer.all.sample, value_input: Random.rand(50..1200), 
+              currency_input_id: Random.rand(0..18), currency_out_id: Random.rand(0..18),
+              created_at: Date.today - Random.rand(0..30) )
+end
+puts "Compras Cadastradas"
+
+
+puts "Cadastrando vendas"
+150.times do
+  Sell.create!(user: User.all.sample,customer: Customer.all.sample, value_input: Random.rand(50..1200), 
+              currency_input_id: Random.rand(0..18), currency_out_id: Random.rand(0..18),
+              created_at: Date.today - Random.rand(0..30) )
+end
+puts "vendas Cadastradas"

@@ -1,4 +1,5 @@
 class ReportController < ApplicationController
+  before_action :set_currency
   before_action :set_sell, only: [:report_sell]
   before_action :set_buy, only: [:report_buy]
 
@@ -8,7 +9,7 @@ class ReportController < ApplicationController
     if params[:search] and params[:search] != ''
       @sells = Sell.where("date(created_at) = ?", param_search)
     else
-      @sells = Sell.last(30)
+      @sells = Sell.last(70)
     end
   end
 
@@ -33,5 +34,9 @@ class ReportController < ApplicationController
 
   def set_buy
     @buys = Buy.all
+  end
+
+  def set_currency
+    @currencies = Currency.all
   end
 end
