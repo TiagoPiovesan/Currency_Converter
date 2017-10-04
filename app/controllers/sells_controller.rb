@@ -1,8 +1,10 @@
 class SellsController < ApplicationController
   before_action :set_sell, only: [:show, :edit, :update, :destroy]
+  before_action :set_sell_pdf, only: [:export]
   before_action :set_select_information, only: [:edit, :new, :create, :update]
   before_action :set_all_price_sell, only: [:index, :show, :create, :update, :edit, :new]
 
+  require './lib/generate_sell_pdf'
 
   # GET /sells
   # GET /sells.json
@@ -72,6 +74,21 @@ class SellsController < ApplicationController
     end
   end
 
+  def export
+
+    # @sell.currency_input = Currency.find(@sell.currency_input_id).name
+    # @sell.currency_out = Currency.find(@sell.currency_out_id).name
+
+    GeneratePdf::sell(@sell.user.name, @sell.customer.name, @sell.value_input, @sell.value_out, 
+                      @sell.currency_input_id,
+                      @sell.currency_out_id,
+                      @sell.created_at, @sell.updated_at)
+
+    # redirect_to '/pdf/sell.pdf'
+    redirect_to "/pdf/venda_#{(DateTime.now).strftime('%d-%m-%y_%H-%M-%S')}.pdf"
+
+  end
+
   private
 
       # % da Compra
@@ -91,6 +108,10 @@ class SellsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_sell
       @sell = Sell.find(params[:id])
+    end
+
+    def set_sell_pdf
+      @sell = Sell.find(params[:format])
     end
 
     def set_select_information

@@ -26,6 +26,8 @@ gem 'cocoon'
 gem 'kaminari'
 # estilizar com bootstrap
 gem 'bootstrap-kaminari-views'
+# Gem para gerar os pdfs
+gem 'prawn-rails'
 
 source 'https://rails-assets.org' do
   #bootstrap growl
