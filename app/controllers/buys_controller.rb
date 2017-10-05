@@ -1,13 +1,14 @@
 class BuysController < ApplicationController
   before_action :set_buy, only: [:show, :edit, :update, :destroy]
+  before_action :set_buy_pdf, only: [:export]
   before_action :set_select_information, only: [:edit, :new, :create, :update]
   before_action :set_all_price_buy, only: [:index, :show, :create, :update, :edit, :new]
   
-  
+  require './lib/generate_buy_pdf'
   # GET /buys
   # GET /buys.json
   def index
-    @buys = Buy.all
+    @buys = Buy.all.page(params[:page]).per(30)
   end
 
   # GET /buys/1
@@ -71,6 +72,16 @@ class BuysController < ApplicationController
     end
   end
 
+  def export
+
+    GeneratePdf::buy(@buy.user.name, @buy.customer.name, @buy.value_input, @buy.value_out, 
+                      @buy.currency_input_id,
+                      @buy.currency_out_id,
+                      @buy.created_at, @buy.updated_at)
+    redirect_to "/pdf/compra_#{(DateTime.now).strftime('%d-%m-%y_%H-%M-%S')}.pdf"
+
+  end
+
   private
     # % da Compra
     Value_in_buy = 1.01741
@@ -101,6 +112,9 @@ class BuysController < ApplicationController
       params.require(:buy).permit(:user_id, :customer_id, :value_input, :currency_input_id, :currency_out_id)
     end
 
+    def set_buy_pdf
+      @buy = Buy.find(params[:format])
+    end
 
     def calculation_buy 
       value_input = params[:buy][:value_input]

@@ -3,8 +3,17 @@
     <div class="container-fluid">
 
         <!-- Page header -->
-        <div class="page-header">
-            <h2>Linha do tempo de <%= action %></h2>
+        <div class="page-header" style="padding-bottom: 99px;">
+            <div class="col-sm-8 col-xs-12">
+                <h2>
+                    Linha do tempo de <%= action %>
+                </h2>
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <h3>
+                    Quantidade: <%= amount %>
+                </h3>
+            </div>
         </div>
         <!-- /Page header -->
 
@@ -58,6 +67,11 @@
         
             <% end %>
 
+            <% unless amount > 0 %>
+                <center>
+                      <h1>Sem cambiações nesse dia</h1>
+                </center>
+            <% end %>
 
         </div>
         <!-- /Timeline -->

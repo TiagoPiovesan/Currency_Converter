@@ -9,7 +9,7 @@ class SellsController < ApplicationController
   # GET /sells
   # GET /sells.json
   def index
-    @sells = Sell.all
+    @sells = Sell.all.page(params[:page]).per(30)
   end
 
   # GET /sells/1
@@ -76,15 +76,11 @@ class SellsController < ApplicationController
 
   def export
 
-    # @sell.currency_input = Currency.find(@sell.currency_input_id).name
-    # @sell.currency_out = Currency.find(@sell.currency_out_id).name
-
     GeneratePdf::sell(@sell.user.name, @sell.customer.name, @sell.value_input, @sell.value_out, 
                       @sell.currency_input_id,
                       @sell.currency_out_id,
                       @sell.created_at, @sell.updated_at)
 
-    # redirect_to '/pdf/sell.pdf'
     redirect_to "/pdf/venda_#{(DateTime.now).strftime('%d-%m-%y_%H-%M-%S')}.pdf"
 
   end

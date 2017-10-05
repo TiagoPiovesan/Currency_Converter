@@ -51,16 +51,16 @@ puts "Telefone Cadastrado"
 
 
 puts "Cadastrando Compras"
-150.times do
+143.times do
   Buy.create!(user: User.all.sample,customer: Customer.all.sample, value_input: Random.rand(50..1200), 
-              currency_input_id: Random.rand(0..18), currency_out_id: Random.rand(0..18),
+              currency_input: Random.rand(0..18), currency_out_id: Random.rand(0..18),
               created_at: Date.today - Random.rand(0..30) )
 end
 puts "Compras Cadastradas"
 
 
 puts "Cadastrando vendas"
-150.times do
+123.times do
   Sell.create!(user: User.all.sample,customer: Customer.all.sample, value_input: Random.rand(50..1200), 
               currency_input_id: Random.rand(0..18), currency_out_id: Random.rand(0..18),
               created_at: Date.today - Random.rand(0..30) )

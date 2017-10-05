@@ -39,11 +39,18 @@
                   <i class="fa fa-minus"></i>
                 <% end %>
 
+                <%= link_to buy_export_path(buy), target: "_blank", class: "btn btn-info btn-circle" do %>
+                  <i class="fa fa-file-pdf-o "></i>
+                <% end %>
+
               </td>
             </tr>
       <% end %>
     </tbody>
   </table>
+  <center>
+    <%= paginate @buys, :theme => 'twitter-bootstrap-3',:pagination_class => "pagination-sm" %>
+  </center>
 <% else %>
 
   <center>

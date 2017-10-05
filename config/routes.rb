@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   get 'report/report_sell'
-
   get 'report/report_buy'
 
   resources :sells
   get '/sell_export' => 'sells#export'
-
   resources :buys
+  get '/buy_export' => 'buys#export'
   post 'atualizar' => 'currencies#atualizar', as: :atualizar
 
   resources :customers

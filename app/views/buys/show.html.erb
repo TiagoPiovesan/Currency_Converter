@@ -97,7 +97,14 @@
     </div>
 
        <div class="panel-footer">
+
+           <%= link_to  'Voltar', buys_path, class:"btn btn-sm btn-default" %>
+
             <span class="pull-right">
+
+                <%= link_to buy_export_path(@buy),class:"btn btn-sm btn-info" do %>
+                    <i class="fa fa-file-pdf-o"></i>
+                <% end %>
 
                 <%= link_to edit_buy_path(@buy), class:"btn btn-sm btn-warning" do %>
                     <i class="glyphicon glyphicon-edit"></i>
