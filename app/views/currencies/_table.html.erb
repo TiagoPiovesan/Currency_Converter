@@ -13,7 +13,7 @@
       <tr>
         <td><%= currency.id %></td>
         <td><%= currency.name %></td>
-        <td>R$ <%= number_with_precision(currency.price, precision: 5) %></td>
+        <td>$ <%= number_with_precision(currency.price, precision: 5) %></td>
         <td>
           <%= link_to '#', class:"btn btn-primary btn-circle", disabled: "disabled"  do %>
               <i class="fa fa-eye"></i>

@@ -1,48 +1,4 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require animate-css
- *= require font-awesome
  *= require bootstrap_sb_admin_base_v2
- *= require_tree .
  *= require_self
  */
-
-.busca_formulario{
-    margin-top: 30px;
-}
-
-.table{
-  font-size: 13px;
-}
-
-
-@media only screen and (max-width: 768px){
-
-}
-
-@media only screen and (min-width: 1200px){
-
-}
-@media only screen and (min-width: 992px) and (max-width: 1199px){
-
-}
-@media only screen and (min-width: 769px) and (max-width: 991px){
-
-}
-@media only screen and (max-width: 768px){
-
-  .email-navbar{
-    text-align: center;
-  }
-
-}

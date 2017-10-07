@@ -1,4 +1,4 @@
-class SellsController < ApplicationController
+class SellsController < BackofficeController
   before_action :set_sell, only: [:show, :edit, :update, :destroy]
   before_action :set_sell_pdf, only: [:export]
   before_action :set_select_information, only: [:edit, :new, :create, :update]

@@ -22,8 +22,8 @@
               <td><%= buy.id %></td>
               <td><%= buy.user.name %></td>
               <td><%= buy.customer.name %></td>
-              <td>R$ <%= number_with_precision(buy.value_input, precision: 2) %></td>
-              <td>R$ <%= number_with_precision(buy.value_out, precision: 2) %></td>
+              <td>$ <%= number_with_precision(buy.value_input, precision: 2) %></td>
+              <td>$ <%= number_with_precision(buy.value_out, precision: 2) %></td>
               <td><%= @currencies.find(buy.currency_input_id).name %></td>
               <td><%= @currencies.find(buy.currency_out_id).name %></td>
               <td class="text-center">

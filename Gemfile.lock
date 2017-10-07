@@ -49,7 +49,6 @@ GEM
       jquery-rails
     builder (3.2.3)
     byebug (9.0.6)
-    chartkick (2.2.4)
     choice (0.2.0)
     cocoon (1.2.10)
     coderay (1.1.1)
@@ -257,7 +256,6 @@ DEPENDENCIES
   bootstrap-kaminari-views
   bootstrap_sb_admin_base_v2
   byebug
-  chartkick
   cocoon
   coffee-rails (~> 4.1.0)
   cpf_cnpj
@@ -265,7 +263,7 @@ DEPENDENCIES
   devise-i18n
   faker
   foreman
-  groupdate (~> 2.5, >= 2.5.2)
+  groupdate
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

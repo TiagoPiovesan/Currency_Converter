@@ -50,9 +50,9 @@
                         Entrada: <b><%= @currencies.find(type.currency_input_id).name %></b> x Saída: <b><%= @currencies.find(type.currency_out_id).name %> </b>
                         <br>
 
-                        R$ <%= number_with_precision(type.value_input, precision: 2) %> <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        $ <%= number_with_precision(type.value_input, precision: 2) %> <i class="fa fa-arrow-right" aria-hidden="true"></i>
 
-                        R$ <%= number_with_precision(type.value_out, precision: 2) %>
+                        $ <%= number_with_precision(type.value_out, precision: 2) %>
 
                         <%= link_to "Ver Mais", type, class: 'btn btn-default btn-sm pull-right' %>
                     </div>

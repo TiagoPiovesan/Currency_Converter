@@ -1,15 +1,26 @@
 Rails.application.routes.draw do
+
+  # Rotas site
+  namespace :site do
+    get 'home/index'
+  end
+
+  # rota para as linhas do tempo Comrpas-Vendas 
   get 'report/report_sell'
   get 'report/report_buy'
 
   resources :sells
-  get '/sell_export' => 'sells#export'
   resources :buys
-  get '/buy_export' => 'buys#export'
-  post 'atualizar' => 'currencies#atualizar', as: :atualizar
-
   resources :customers
   resources :currencies, only: [:show, :destroy, :index]
+
+  # rota para criação dos reltórios
+  get '/buy_export' => 'buys#export'
+  get '/sell_export' => 'sells#export'
+
+  # rota do botão de atualização
+  post 'atualizar' => 'currencies#atualizar', as: :atualizar
+
   # skip serve para pular a faze de registração do usuário, cadastro só poderão ser feitos dentro do sistema
   devise_for :users, :skip => [:registrations]
   
@@ -19,6 +30,6 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  root 'backoffice/dashboard#index'
+  root 'site/home#index'
 
 end

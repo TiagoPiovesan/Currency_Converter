@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class CustomersController < BackofficeController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers

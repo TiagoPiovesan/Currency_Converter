@@ -1,4 +1,4 @@
-class ReportController < ApplicationController
+class ReportController < BackofficeController
   before_action :set_currency, :set_size
   before_action :set_sell, only: [:report_sell]
   before_action :set_buy, only: [:report_buy]

@@ -1,4 +1,4 @@
-class BuysController < ApplicationController
+class BuysController < BackofficeController
   before_action :set_buy, only: [:show, :edit, :update, :destroy]
   before_action :set_buy_pdf, only: [:export]
   before_action :set_select_information, only: [:edit, :new, :create, :update]

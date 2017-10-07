@@ -1,4 +1,4 @@
-class CurrenciesController < ApplicationController
+class CurrenciesController < BackofficeController
   before_action :set_currency, only: [:show, :destroy]
   before_action :set_all_currencies, :set_all_price_buy, :set_all_price_sell , only: [:index]
 
