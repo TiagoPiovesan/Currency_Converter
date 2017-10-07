@@ -28,6 +28,10 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 # Gem para gerar os pdfs
 gem 'prawn-rails'
+# Create beautiful Javascript charts with one line of Ruby
+gem 'chartkick'
+# The simplest way to group temporal data
+gem 'groupdate', '~> 2.5', '>= 2.5.2'
 
 source 'https://rails-assets.org' do
   #bootstrap growl

@@ -49,6 +49,7 @@ GEM
       jquery-rails
     builder (3.2.3)
     byebug (9.0.6)
+    chartkick (2.2.4)
     choice (0.2.0)
     cocoon (1.2.10)
     coderay (1.1.1)
@@ -84,6 +85,8 @@ GEM
       thor (>= 0.13.6)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    groupdate (2.5.3)
+      activesupport (>= 3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.6)
@@ -254,6 +257,7 @@ DEPENDENCIES
   bootstrap-kaminari-views
   bootstrap_sb_admin_base_v2
   byebug
+  chartkick
   cocoon
   coffee-rails (~> 4.1.0)
   cpf_cnpj
@@ -261,6 +265,7 @@ DEPENDENCIES
   devise-i18n
   faker
   foreman
+  groupdate (~> 2.5, >= 2.5.2)
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

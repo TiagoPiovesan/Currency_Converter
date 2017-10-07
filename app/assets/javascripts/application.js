@@ -16,6 +16,8 @@
 //= require bootbox
 //= require cocoon
 //= require bootstrap.growl
+//= require highcharts
+//= require chartkick
 //= require_tree .
 
 

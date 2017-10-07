@@ -18,17 +18,31 @@ module GeneratePdf
       # Define a cor do traçado
       pdf.fill_color "333333"
       # Cria um texto com tamanho 30 PDF Points, bold alinha no centro
-      pdf.text "Relatório de Compra", :size => 26, :style => :bold, :align => :center
+      pdf.text "Relatório da Compra", :size => 26, :style => :bold, :align => :center
       # Move 80 PDF points para baixo o cursor
+
+      pdf.text"
+      Funcionário: #{user} 
+      Cliente: #{customer}
+
+      - Moeda de entrada: #{Currency.find(currency_input_id).name} <br>
+      
+      - Preço da moeda: $ #{Currency.find(currency_input_id).price } <br>
+      
+      - Moeda de saída: #{Currency.find(currency_out_id).name} <br>
+      
+      - Preço da moeda: $ #{Currency.find(currency_out_id).price } <br>
+      
+      - Valor de Entrada: <b> $ #{value_input.round(2)} </b> <br>
+      
+      - Valor de Saída: <b> $ #{value_out.round(2)} </b>
+      
+
+      ", :size => 12, :align => :justify, :inline_format => true
+
       pdf.move_down 30
       # Escreve o texto do contrato com o tamanho de 14 PDF points, com o alinhamento justify
-      pdf.text "
-
-      # Move mais 30 PDF points para baixo o cursor
-      pdf.move_down 30
-      # Escreve o texto com os detalhes que o usuário entrou
-      # pdf.text "#{created_at}", :size => 12, :align => :justify, :inline_format => true
-      # Move mais 30 PDF points para baixo o cursor
+      
       pdf.move_down 11
       # Muda de font para Helvetica
       pdf.font "Helvetica"
