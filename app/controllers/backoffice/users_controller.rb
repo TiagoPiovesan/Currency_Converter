@@ -62,9 +62,16 @@ class Backoffice::UsersController < BackofficeController
                                  :password_confirmation, 
                                  :sex,
                                  :role, 
+                                 :avatar,
                                  :name, 
                                  :cpf, 
                                  :birth,
+                                 :kind,
+                                 :facebook,
+                                 :twitter,
+                                 :rmk,
+                                 :google,
+                                 :linkedin,
                                  phones_attributes: [:id, :number, :_destroy]
                                 )
   end

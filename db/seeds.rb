@@ -1,14 +1,40 @@
 puts "Cadastrando administrador padrão"
-User.create!(name: 'Tiago Piovesan', cpf: CPF.generate(true),email: "tiago.piovesan.tp@gmail.com", 
-  password: "123456", password_confirmation: "123456", sex: 1, role: 1,birth: '03/09/1996', )
+User.create!(
+  name: 'Tiago Piovesan', 
+  cpf: CPF.generate(true),
+  email: "tiago.piovesan.tp@gmail.com", 
+  password: "123456", 
+  password_confirmation: "123456", 
+  sex: 1, 
+  facebook: 'https://www.facebook.com/tiago.piovesan',
+  twitter: 'https://twitter.com',
+  google: 'https://plus.google.com/',
+  linkedin: 'https://www.linkedin.com/tiago-piovesan/',
+  kind: 0,
+  rmk: Faker::Lorem.paragraph,
+  role: 1,birth: '03/09/1996',
+  avatar: File.new(Rails.root.join('public','templates', 'avatar_for_user','team-2.jpg'),'r')
+  )
 puts "Administrador padrão Cadastrado"
 
 
 puts "Cadastrando administradores"
 3.times do
-  User.create!(name: Faker::GameOfThrones.character,cpf: CPF.generate, email: Faker::Internet.email, 
-    password: "123456", password_confirmation: "123456", sex: [0,1].sample, role: [0,1].sample,
-    birth: Faker::Date.birthday(18, 65) )
+  User.create!(
+    name: Faker::GameOfThrones.character,
+    cpf: CPF.generate, email: Faker::Internet.email, 
+    password: "123456", 
+    password_confirmation: "123456", 
+    sex: [0,1].sample, role: [0,1].sample,
+    facebook: 'https://www.facebook.com/',
+    twitter: 'https://twitter.com',
+    google: 'https://plus.google.com/',
+    linkedin: 'https://www.linkedin.com/',
+    kind: [1,2].sample,
+    rmk: Faker::Lorem.paragraph,
+    birth: Faker::Date.birthday(18, 65),
+    avatar: File.new(Rails.root.join('public','templates', 'avatar_for_user',"team-#{[1,3,4].sample}.jpg"),'r')
+    )
 end
 puts "Administradores Cadastrados"
 
@@ -53,7 +79,7 @@ puts "Telefone Cadastrado"
 puts "Cadastrando Compras"
 143.times do
   Buy.create!(user: User.all.sample,customer: Customer.all.sample, value_input: Random.rand(50..1200), 
-              currency_input: Random.rand(0..18), currency_out_id: Random.rand(0..18),
+              currency_input_id: Random.rand(0..18), currency_out_id: Random.rand(0..18),
               created_at: Date.today - Random.rand(0..30) )
 end
 puts "Compras Cadastradas"

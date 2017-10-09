@@ -2,18 +2,23 @@
  *= require animate-css
  *= require font-awesome
  *= require bootstrap_sb_admin_base_v2
- *= require_tree .
  *= require_self
  */
 
 .busca_formulario{
     margin-top: 30px;
 }
-
-.table{
-  font-size: 13px;
+.botao-remover{
+  color: red;
+  margin-top: 33px;
 }
-
+.panel-footer{
+  padding-bottom: 40px;
+}
+.btn-telefone{
+  margin: 15px -15px;
+  margin-bottom: 25px;
+}
 
 @media only screen and (max-width: 768px){
 

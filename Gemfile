@@ -28,6 +28,8 @@ gem 'bootstrap-kaminari-views'
 gem 'prawn-rails'
 # The simplest way to group temporal data
 gem 'groupdate'
+# Easy upload management for ActiveRecord
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
 source 'https://rails-assets.org' do
   # Touch enabled, responsive and fully customizable jQuery lightbox script

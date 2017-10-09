@@ -2,56 +2,57 @@
  *= require font-awesome
  *= require animate-css
  *= require bootstrap
- *= require fancyBox
  *= require_self
 */
 
-/* ------------------------------------------------------------------------------
-  Template Name: Minifolio
-  Author: Designstub
-  Author URI: http://www.designstub.com
-  License: GNU General Public License version 3.0
-  License URI: http://www.gnu.org/licenses/gpl-3.0.html
-  Version: 1.0
+$cor-paragrafo: #6c7279;
+$cor-branca: #fff;
+$titulos: #2d3033;
+$cor-btn: #3bc492;
+$hover-btn: #3d3d3d;
+$hover-link: #e84545;
+$cabecalho: #000;
+$link-navegacao: rgba(255, 255, 255, 0.75);
+$texto-banner: rgba(255, 255, 255, 0.60);
+$cor-secoes: #00aeda;
+$cor-footer: #181818;
+$paragrafo-footer: rgba(255, 255, 255, 0.25);
+$link-footer: rgba(255, 255, 255, 0.50);
+$social-icon: #c6cacc;
 
-/* ------------------------------------------------------------------------------
-  Typography
--------------------------------------------------------------------------------*/
 
-@import url(http://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700);
-@import url(http://fonts.googleapis.com/css?family=Merriweather:300,400,500,600,700);
 p {
   font-size: 13px;
   line-height: 22.4px;
-  color: #6c7279;
+  color: $cor-paragrafo;
 }
 h1 {
   font-size: 65px;
-  color: #2d3033;
+  color: $titulos;
 }
 h2 {
   font-size: 40px;
-  color: #2d3033;
+  color: $titulos;
 }
 h3 {
   font-size: 28px;
-  color: #2d3033;
+  color: $titulos;
   font-weight: 300;
 }
 h4 {
   font-size: 22px;
-  color: #2d3033;
+  color: $titulos;
   font-weight: 400;
 }
 h5 {
   font-size: 14px;
-  color: #2d3033;
+  color: $titulos;
   text-transform: uppercase;
   font-weight: 700;
 }
 .btn {
-  background-color: #3bc492;
-  color: #fff;
+  background-color: $cor-btn;
+  color: $cor-branca;
   font-size: 13px;
   font-weight: 600;
   border: 0;
@@ -62,8 +63,8 @@ h5 {
   text-transform: uppercase;
 }
 .btn:hover, .btn:focus {
-  background-color: #3d3d3d;
-  color: #fff;
+  background-color: $hover-btn;
+  color: $cor-branca;
 }
 .btn-large {
   padding: 15px 40px;
@@ -72,7 +73,7 @@ h5 {
   Global Styles
 -------------------------------------------------------------------------------*/
 a {
-  color: #e84545;
+  color: $hover-link;
 }
 a:hover, a:focus {
   text-decoration: none;
@@ -84,7 +85,7 @@ a:hover, a:focus {
 body {
   font-family: "Open Sans", Arial, sans-serif;
   font-weight: 400;
-  color: #6c7279;
+  color: $cor-paragrafo;
 }
 ul, ol {
   margin: 0;
@@ -128,16 +129,16 @@ ul li {
   float: left;
   font-size:24px;
   font-weight:700;
-  color:#fff;
+  color:$cor-branca;
   text-decoration:none;
   text-transform:uppercase;
   letter-spacing:6px;
 }
 #header.fixed {
-  background-color: #fff;
+  background-color: $cor-branca;
 }
 #header.fixed a {
-  color: #000;
+  color: $cabecalho;
 }
 #header.fixed .header-content {
   border-bottom: 0;
@@ -145,7 +146,7 @@ ul li {
 }
 #header.fixed .nav-toggle {
   top: 18px;
-  color: #000;
+  color: $cabecalho;
 }
 .navigation.open {
   opacity: 0.9;
@@ -162,14 +163,14 @@ ul li {
   display: inline-block;
 }
 .navigation a {
-  color: rgba(255, 255, 255, 0.75);
+  color: $link-navegacao;
   font-size: 13px;
   font-weight: 700;
   margin-left: 40px;
   text-transform: uppercase;
 }
 .navigation a:hover, .navigation a.active {
-  color: #fff;
+  color: $cor-branca;
 }
 .nav-toggle {
   display: none;
@@ -208,7 +209,7 @@ ul li {
   transition-property: transform;
 }
 .nav-toggle:before {
-  background-color: #e84545;
+  background-color: $hover-link;
   -moz-transform: scale(1);
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
@@ -219,7 +220,7 @@ ul li {
   transition-duration: 0.3s;
 }
 .nav-toggle:after {
-  background-color: #e84545;
+  background-color: $hover-link;
   -moz-transform: scale(0);
   -ms-transform: scale(0);
   -webkit-transform: scale(0);
@@ -230,7 +231,7 @@ ul li {
   transition-duration: 0s;
 }
 .nav-toggle span {
-  background-color: #fff;
+  background-color: $cor-branca;
   bottom: auto;
   display: inline-block;
   height: 3px;
@@ -246,7 +247,7 @@ ul li {
   transform: translateX(-50%) translateY(-50%);
 }
 .nav-toggle span:before, .nav-toggle span:after {
-  background-color: #fff;
+  background-color: $cor-branca;
   content: "";
   height: 100%;
   position: absolute;
@@ -293,7 +294,7 @@ ul li {
   background-color: rgba(255, 255, 255, 0);
 }
 .nav-toggle.close-nav span:before, .nav-toggle.close-nav span:after {
-  background-color: #fff;
+  background-color: $cor-branca;
 }
 .nav-toggle.close-nav span:before {
   -moz-transform: translateY(0) rotate(45deg);
@@ -325,14 +326,14 @@ ul li {
   padding-top: 22%;
 }
 .banner-text h1 {
-  color: #fff;
+  color: $cor-branca;
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 65px;
   font-weight: 700;
   text-transform: uppercase;
 }
 .banner-text p {
-  color: rgba(255, 255, 255, 0.60);
+  color: $texto-banner;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -343,15 +344,15 @@ ul li {
   $intro
 ========================================================================== */
 .intro {
-  background-color: #00aeda;
+  background-color: $cor-secoes;
 }
 .intro h3 {
-  color: #fff;
+  color: $cor-branca;
   margin-top: 0;
 }
 .intro p {
   font-family: "Merriweather", Arial, sans-serif;
-  color: rgba(255, 255, 255, 0.75);
+  color: $link-navegacao;
   font-weight: 400;
 }
 /* ------------------------------------------------------------------------------
@@ -368,89 +369,8 @@ ul li {
   margin-top: 30px;
 }
 .services .fa {
-  color: #00aeda;
+  color: $cor-secoes;
   font-size: 50px;
-  padding-left: 15px;
-}
-/* ------------------------------------------------------------------------------
-   Works
--------------------------------------------------------------------------------*/
-.work {
-  -moz-box-shadow: 0 0 0 1px #fff;
-  -webkit-box-shadow: 0 0 0 1px #fff;
-  box-shadow: 0 0 0 1px #fff;
-  overflow: hidden;
-  position: relative;
-}
-.work img {
-  width: 100%;
-  height: 100%;
-}
-.work .overlay {
-  background: rgba(0, 174, 218, 0.9);
-  height: 100%;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  -moz-transition: opacity, 0.3s;
-  -o-transition: opacity, 0.3s;
-  -webkit-transition: opacity, 0.3s;
-  transition: opacity, 0.3s;
-}
-.work .overlay-caption {
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  width: 100%;
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-.work h5, .work p, .work img {
-  -moz-transition: all, 0.5s;
-  -o-transition: all, 0.5s;
-  -webkit-transition: all, 0.5s;
-  transition: all, 0.5s;
-}
-.work h5, .work p {
-  color: #fff;
-  margin: 0;
-  opacity: 0;
-}
-.work span {
-  font-size: 45px;
-}
-.work h5 {
-  margin-bottom: 5px;
-  -moz-transform: translate3d(0, -200%, 0);
-  -ms-transform: translate3d(0, -200%, 0);
-  -webkit-transform: translate3d(0, -200%, 0);
-  transform: translate3d(0, -200%, 0);
-}
-.work p {
-  -moz-transform: translate3d(0, 200%, 0);
-  -ms-transform: translate3d(0, 200%, 0);
-  -webkit-transform: translate3d(0, 200%, 0);
-  transform: translate3d(0, 200%, 0);
-}
-.work-box:hover img {
-  -moz-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-}
-.work-box:hover .overlay {
-  opacity: 1;
-}
-.work-box:hover .overlay h5, .work-box:hover .overlay p {
-  opacity: 1;
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 }
 /* ------------------------------------------------------------------------------
    Teams
@@ -472,7 +392,7 @@ ul li {
   font-weight: 400;
 }
 .person h5 {
-  color: #00aeda;
+  color: $cor-secoes;
   font-size: 13px;
   font-weight: 400;
   margin-bottom: 20px;
@@ -489,7 +409,7 @@ ul li {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  color: #c6cacc;
+  color: $social-icon;
   display: block;
   padding-top: 8px;
   font-size: 14px;
@@ -500,15 +420,15 @@ ul li {
   width: 32px;
 }
 .social-icons a:hover {
-  background-color: #00aeda;
+  background-color: $cor-secoes;
   border-color: #01a9d4;
-  color: #fff;
+  color: $cor-branca;
 }
 /* ------------------------------------------------------------------------------
    Testimonials
 -------------------------------------------------------------------------------*/
 .testimonials {
-  background-color: #00aeda;
+  background-color: $cor-secoes;
   position: relative;
   text-align: center;
 }
@@ -518,12 +438,12 @@ ul li {
   padding: 100px 15%;
 }
 .testimonials h1 {
-  color: #fff;
+  color: $cor-branca;
   font: 23px "Merriweather";
   font-weight: 300;
 }
 .testimonials p {
-  color: #fff;
+  color: $cor-branca;
   display: block;
   font-size: 13px;
   font-style: normal;
@@ -581,8 +501,8 @@ ul li {
   border-bottom: #e0e0e0 1px solid;
 }
 .conForm .submitBnt {
-  background: #3bc492;
-  color: #fff;
+  background: $cor-btn;
+  color: $cor-branca;
   margin-top: 30px;
 padding:15px 30px 15px 30px;
   font-size: 13px;
@@ -596,8 +516,8 @@ padding:15px 30px 15px 30px;
   text-transform: uppercase;
 }
 .conForm .submitBnt:hover {
-  background: #3d3d3d;
-  color: #fff;
+  background: $hover-btn;
+  color: $cor-branca;
 }
 #success_page{
   color: #00bdbd;
@@ -621,7 +541,7 @@ padding:15px 30px 15px 30px;
   text-align: left;
 }
 .footer-top {
-  background-color: #181818;
+  background-color: $cor-footer;
   padding-top: 50px;
 }
 .footer-bottom {
@@ -632,19 +552,19 @@ padding:15px 30px 15px 30px;
   margin-bottom: 80px;
 }
 .footer h5 {
-  color: #fff;
+  color: $cor-branca;
 }
 .footer h5 {
   margin-bottom: 20px;
 }
 .footer p {
-  color: rgba(255, 255, 255, 0.25);
+  color: $paragrafo-footer;
 }
 .footer a {
-  color: rgba(255, 255, 255, 0.50);
+  color: $link-footer;
 }
 .footer a:hover {
-  color: #e84545;
+  color: $hover-link;
 }
 .footer .footer-share {
   margin-top: 0;
@@ -656,10 +576,10 @@ padding:15px 30px 15px 30px;
 .footer .footer-share a {
   border: none;
   font-size: 21px;
-  color: rgba(255, 255, 255, 0.25);
+  color: $paragrafo-footer;
 }
 .footer .fa-heart {
-  color: #e84545;
+  color: $hover-link;
   font-size: 11px;
   margin: 0 2px;
 }
@@ -671,14 +591,14 @@ padding:15px 30px 15px 30px;
    padding: 40px 0;
   }
    #header.fixed a {
-   color: #000;
+   color: $cabecalho;
   }
    .nav-toggle {
    display: block;
   }
    .navigation {
    position: fixed;
-   background-color: #000;
+   background-color: $cabecalho;
    width: 100%;
    height: 100%;
    top: 0;
@@ -746,6 +666,10 @@ padding:15px 30px 15px 30px;
   }
    .footer .footer-col {
    margin-bottom: 50px;
+  }
+  .banner-text h1{
+    padding-top: 30px;
+    padding-bottom: 170px;
   }
 }
 @media screen and (max-width: 640px) {

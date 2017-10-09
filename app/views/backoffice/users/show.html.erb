@@ -9,7 +9,7 @@
         <div class="row">
           <div class="col-md-3 col-lg-3 " align="center">
 
-          <%= image_tag("perfil.jpg", class: "img-circle img-responsive") %>
+          <%= image_tag( @user.avatar.url(:medium), class: "img-circle img-responsive") %>
            </div>
           
 
@@ -24,6 +24,7 @@
                   <td>CPF:</td>
                   <td><%= @user.cpf %></td>
                 </tr>
+
                 <tr>
                   <td>E-mail:</td>
                   <td><a href="<%= @user.email %>"><%= @user.email %></td>
@@ -33,10 +34,42 @@
                   <td>Sexo:</td>
                   <td><%= @user.sex %></td>
                 </tr>
-                  <tr>
+
+                <tr>
                   <td>Data de Nascimento:</td>
-                  <td><%= @user.birth %></td>
+                  <td><%= l(@user.birth) %></td>
                 </tr>
+
+                <tr>
+                  <td>Cargo:</td>
+                  <td><%= @user.kind %></td>
+                </tr>
+
+                <tr>
+                  <td>Facebook:</td>
+                  <td><a href="<%= @user.facebook %>"><%= @user.facebook %></a></td>
+                </tr>
+
+                <tr>
+                  <td>Twitter:</td>
+                  <td><a href="<%= @user.twitter %>"><%= @user.twitter %></a></td>
+                </tr>
+
+                <tr>
+                  <td>Linkedin:</td>
+                  <td><a href="<%= @user.linkedin %>"><%= @user.linkedin %></a></td>
+                </tr>
+
+                <tr>
+                  <td>Google+:</td>
+                  <td><a href="<%= @user.google %>"><%= @user.google %></a></td>
+                </tr>
+
+                <tr>
+                  <td>Observação:</td>
+                  <td><%= @user.rmk %></td>
+                </tr>
+
                 <tr>
                   <td>Tipo do Acesso:</td>
                   <td><%= @user.role %></td>

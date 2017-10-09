@@ -9,8 +9,8 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <%= form_for ([:backoffice, @user]) do |f| %>
+                    <div class="col-sm-5">
+                        <%= form_for ([:backoffice, @user]), html: { multipart: true } do |f| %>
                             <div class="form-group">
                                 <label>Nome</label>
                                 <%= f.text_field :name, class: 'form-control', placeholder: 'Nome' %>
@@ -26,6 +26,35 @@
                                 <%= f.text_field :cpf, class: 'form-control', placeholder: 'CPF' %>
                             </div>
 
+                            <div class="form-group">
+                                <label>Cargo</label>
+                                <%= f.select :kind, User.kinds.keys, {}, { class: 'form-control' } %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Facebook</label>
+                                <%= f.text_field :facebook, class: 'form-control', placeholder: 'Link do facebook' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Twitter</label>
+                                <%= f.text_field :twitter, class: 'form-control', placeholder: 'Link do twitter' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Linkedin</label>
+                                <%= f.text_field :linkedin, class: 'form-control', placeholder: 'Link do linkedin' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Google +</label>
+                                <%= f.text_field :google, class: 'form-control', placeholder: 'Link do google+' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Observação</label>
+                                <%= f.text_area :rmk, class: 'form-control', rows: '5', placeholder: 'Breve descrição sobre o funcionário' %>
+                            </div>
 
                             <div class="form-group">
                                 <label>Data de Nasciemnto</label>
@@ -33,13 +62,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Senha</label>
-                                <%= f.password_field :password, class: 'form-control', placeholder: 'Senha' %>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Confirme a senha</label>
-                                <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirme a senha' %>
+                                <label>Sexo</label>
+                                <%= f.select :sex, User.sexes.keys, {}, { class: 'form-control' } %>
                             </div>
 
                             <!-- Formulário Complexo --> 
@@ -50,13 +74,18 @@
                             </div>
 
                             <div class="col-xs-12">        
-                                  <%= link_to_add_association('Adicionar Telefone', f, :phones) %>
+                                  <%= link_to_add_association('Adicionar Telefone', f, :phones, class: 'btn btn-primary btn-telefone') %>
                             </div>
                             <!-- /Formulário Complexo --> 
 
                             <div class="form-group">
-                                <label>Sexo</label>
-                                <%= f.select :sex, User.sexes.keys, {}, { class: 'form-control' } %>
+                                <label>Senha</label>
+                                <%= f.password_field :password, class: 'form-control', placeholder: 'Senha' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirme a senha</label>
+                                <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirme a senha' %>
                             </div>
 
                             <div class="form-group">
@@ -71,7 +100,17 @@
                               <%= f.submit 'Salvar', class: 'btn btn-default' %>
                               <%= link_to "Voltar", backoffice_users_path, class: "btn btn-default" %>
                             </div>
-                        <% end %>
+                        
+                    </div>
+                    <div class="col-sm-7 col-xs-12">
+                        <div class="form-group pull-right">
+                            <%= image_tag( @user.avatar.url(:large), class: 'img-thumbnail') %> 
+                            <br>
+                            <br>
+                            <label>Foto</label>
+                            <%= f.file_field :avatar, class: "form-control-file"%> <br>
+                        </div>
+                        <% end %>                       
                     </div>
                     <!-- /.col-lg-6 (nested) -->
                 </div>

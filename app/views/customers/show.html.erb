@@ -36,7 +36,7 @@
                 </tr>
                   <tr>
                   <td>Data de Nascimento:</td>
-                  <td><%= @customer.birth %></td>
+                  <td><%= l(@customer.birth) %></td>
                 </tr>
 
                 <% @customer.phones.each do |phone| %>
