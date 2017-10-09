@@ -3,12 +3,13 @@
 <head>
   <title>Currency Converter - Backoffice</title>
   <%= stylesheet_link_tag    'backoffice', media: 'all' %>
-  <%= javascript_include_tag 'backoffice' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-    <%= render partial: "layouts/shared/navigation" %>
+  <%= render partial: "layouts/shared/navigation" %>
+
+  <%= javascript_include_tag 'backoffice' %>
 
 </body>
 </html>

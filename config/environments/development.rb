@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
   #Configuração FOREMAN para aparecer erros no LOG do console
   $stdout.sync = true
 

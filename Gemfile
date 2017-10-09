@@ -13,8 +13,6 @@ gem 'foreman'
 # layout boostrap para o adm
 gem 'bootstrap_sb_admin_base_v2'
 
-gem 'rails-assets-bootbox', source: 'https://rails-assets.org'
-
 #The Mechanize library is used for automating interaction with websites. Mechanize automatically stores and sends cookies, follows redirects, and can follow links and submit forms. Form fields can be populated and submitted. Mechanize also keeps track of the sites that you have visited as a history.
 gem 'mechanize', '~> 2.7', '>= 2.7.5'
 #selector para o machanize
@@ -32,6 +30,14 @@ gem 'prawn-rails'
 gem 'groupdate'
 
 source 'https://rails-assets.org' do
+  # Touch enabled, responsive and fully customizable jQuery lightbox script
+  gem 'rails-assets-fancyBox'
+  #An awesome, fully responsive jQuery slider toolkit.
+  gem 'rails-assets-flexslider'
+  #bootstrap
+  gem 'rails-assets-bootstrap', '3.3.7'
+  #bootbox, prompt
+  gem 'rails-assets-bootbox'
   #bootstrap growl
   gem 'rails-assets-bootstrap.growl'
   #Animate CSS

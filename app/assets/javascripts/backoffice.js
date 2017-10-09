@@ -36,3 +36,4 @@ $.rails.allowAction = function(element) {
 
   return false;
 }
+
