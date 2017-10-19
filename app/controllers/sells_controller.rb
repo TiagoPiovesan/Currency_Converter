@@ -1,8 +1,8 @@
 class SellsController < BackofficeController
   before_action :set_sell, only: [:show, :edit, :update, :destroy]
   before_action :set_sell_pdf, only: [:export]
-  before_action :set_select_information, only: [:edit, :new, :create, :update]
-  before_action :set_all_price_sell, only: [:index, :show, :create, :update, :edit, :new]
+  before_action :set_information, only: [:edit, :new, :create, :update]
+  before_action :set_price_sell, only: [:index, :show, :create, :update, :edit, :new]
 
   require './lib/generate_sell_pdf'
 
@@ -87,17 +87,10 @@ class SellsController < BackofficeController
 
   private
 
-      # % da Compra
-    Value_in_sell = 1.02862
-    # % do Imposto
-    Value_tax = 1.011
-
-
-    def set_all_price_sell
-      @currencies = Currency.all
-      @currencies.each do |currency|
-        currency.price *= Value_in_sell
-        currency.price *= Value_tax
+    def set_price_sell
+      @currencies_sell = Currency.all
+      @currencies_sell.each do |currency|
+        currency.price = Currency.sell_calculator(currency.price)
       end
     end
 
@@ -110,7 +103,7 @@ class SellsController < BackofficeController
       @sell = Sell.find(params[:format])
     end
 
-    def set_select_information
+    def set_information
       @users = User.all
       @customers = Customer.all
     end
@@ -130,8 +123,7 @@ class SellsController < BackofficeController
         currency_input = @currencies.find(currency_input_id).price.to_f
         currency_output = @currencies.find(currency_out_id).price.to_f 
 
-        currency_output *= Value_in_sell
-        currency_output *= Value_tax
+        currency_output = Currency.sell_calculator(currency_output)
 
         out_value = (value_input.to_f * currency_input) / currency_output
         out_value

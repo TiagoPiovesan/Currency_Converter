@@ -44,6 +44,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap.growl'
   #Animate CSS
   gem 'rails-assets-animate-css'
+  # jquery-mask
+  gem 'rails-assets-jquery-mask'
 end
 
 

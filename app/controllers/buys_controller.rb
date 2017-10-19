@@ -89,10 +89,9 @@ class BuysController < BackofficeController
     Value_tax = 1.011
 
     def set_all_price_buy
-      @currencies = Currency.all
-      @currencies.each do |currency|
-        currency.price *= Value_in_buy
-        currency.price *= Value_tax
+      @currencies_buy = Currency.all
+      @currencies_buy.each do |currency|
+        currency.price = Currency.buy_calculator(currency.price)
       end
     end
 
@@ -126,8 +125,7 @@ class BuysController < BackofficeController
         currency_input = @currencies.find(currency_input_id).price.to_f
         currency_output = @currencies.find(currency_out_id).price.to_f 
 
-        currency_output *= Value_in_buy
-        currency_output *= Value_tax
+        currency_output = Currency.buy_calculator(currency_output)
 
         out_value = (value_input.to_f * currency_input) / currency_output
         out_value

@@ -2,10 +2,10 @@
   <!-- banner text -->
   <div class="container">
     <div class="col-md-10 col-md-offset-1">
-      <div class="banner-text text-center">
-        <h1>Cotação Dólar Hoje</h1>
+      <div id="inicial" class="banner-text text-center">
+        <h1 class="animated bounce">Cotação Dólar Hoje</h1>
         <p class="hidden-xs">Economize ao Comprar Dólar. Somos parceiros das maiores instituições financeiras do país e oferecemos a melhor cotação do dólar em tempo real. Nossas taxas do dólar são válidas 24h por dia e 7 dias por semana.</p>
-        <a href="#" class="btn btn-large">Ver cotações</a> </div>
+        <a id="tabela-cotações" class="btn btn-large" data-toggle="modal" data-target="#myModal">Ver cotações</a> </div>
       <!-- banner text --> 
     </div>
   </div>
@@ -16,7 +16,7 @@
   <div class="container">
     <div class="col-md-8 col-md-offset-2 text-center">
       <h3>Nós somos Currency Converter!</h3>
-      <p> Desde 1968 a Currency Converter Corretora vêm trilhando um caminho de sucesso no mercado de Câmbio, com toda certeza o fator chave para alcançar os resultados desejados, tem sido o reconhecimento da seriedade e da qualidade nos serviços prestados, o que também explica as sólidas parcerias firmadas com pessoas físicas e empresas de diversos setores da economia brasileira!</p>
+      <p> <%= @company.about_us %> </p>
     </div>
   </div>
 </section>
@@ -72,38 +72,38 @@
     <div class="row no-gutter">
       <div class="flexslider">
         <ul class="slides">
+
           <li>
             <div class="col-md-12">
               <blockquote>
-                <h1>"Sem querer e em meio a um grupo do facebook encontrei o site Posters Minimalistas. Foi amor a primeira vista. Como colecionador de filmes, séries e derivados, eu super recomendo. O trabalho que o Anderson faz junto com toda a sua equipe, acompanhado de todo o suporte que os mesmos oferecerem é simplesmente incrível! Obrigado por isso. Obrigado por existirem." </h1>
-                <p>Rene Brown, Open Window production</p>
+                <h1>"É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página quando estiver examinando sua diagramação. A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de "Conteúdo aqui, conteúdo aqui" </h1>
+                <p>Robert J. Hill</p>
               </blockquote>
             </div>
           </li>
+
+
           <li>
             <div class="col-md-12">
               <blockquote>
-                <h1>"Sempre admirei o trabalho do Anderson, e quando soube que ele iria fazer Posters Minimalistas, mesmo antes de lançar o site, já fiz o meu pedido do Poster "The Hobbit". Simplesmente fantástico, cliente até hoje". </h1>
-                <p>Brain Rice, Lexix Private Limited.</p>
+                <h1>"Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica" </h1>
+                <p>William P. Marten</p>
               </blockquote>
             </div>
           </li>
+
+
           <li>
             <div class="col-md-12">
               <blockquote>
-                <h1>"Essa simplicidade em captar toda a informação em uma imagem mínima foi o que mais me chamou atenção.  Achei na P.M. a oportunidade perfeita para presentear os amigos, sem gastar muito, com um produto de qualidade e uma arte que capta aquele sentimento simples de algo que significa muito". </h1>
-                <p>Andi Simond, Global Corporate Inc</p>
+                <h1>"Existem muitas variações disponíveis de passagens de Lorem Ipsum, mas a maioria sofreu algum tipo de alteração, seja por inserção de passagens com humor, ou palavras aleatórias que não parecem nem um pouco convincentes. Se você pretende usar uma passagem de Lorem Ipsum, precisa ter certeza de que não há algo embaraçoso escrito escondido no meio do texto." </h1>
+                <p>Yasmin C. Houston</p>
               </blockquote>
             </div>
           </li>
-          <li>
-            <div class="col-md-12">
-              <blockquote>
-                <h1>"Sempre comentei que queria um poster do Fight Club e quando vi o pôster no site foi só questāo de ter dinheiro sobrando que comprei ele. Assim que o poster entrou em casa já colei ele, isso foi uma facilidade que tenho que ressaltar, nāo tive complicações, algo que sempre me incomodava era ter que furar minha parede. Estão de parabéns pela inovação". </h1>
-                <p>Kristy Gabbor, Martix Media</p>
-              </blockquote>
-            </div>
-          </li>
+          
+          
+          
         </ul>
       </div>
     </div>
@@ -111,74 +111,28 @@
 </section>
 <!-- Testimonials section --> 
 
+
 <!-- our team section -->
 <section id="teams" class="section teams">
   <div class="container">
     <div class="row">
-      <div class="col-md-3 col-sm-6">
-        <div class="person"><%= image_tag("team-1.jpg", class: "img-responsive") %>
-          <div class="person-content">
-            <h4>Lisa Brown</h4>
-            <h5 class="role">The Mastermind</h5>
-            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
+      <% @users.each do |user| %>
+        <div class="col-md-3 col-sm-6">
+          <div class="person"><%= image_tag( user.avatar , class: "img-responsive") %>
+            <div class="person-content">
+              <h4><%= user.name %></h4>
+              <h5 class="role"><%= user.kind %></h5>
+              <p><%= user.rmk %></p>
+            </div>
+            <ul class="social-icons clearfix">
+              <li><a href="<%= user.facebook %>"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="<%= user.twitter %>"><span class="fa fa-twitter"></span></a></li>
+              <li><a href="<%= user.linkedin %>"><span class="fa fa-linkedin"></span></a></li>
+              <li><a href="<%= user.google %>"><span class="fa fa-google-plus"></span></a></li>
+            </ul>
           </div>
-          <ul class="social-icons clearfix">
-            <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-            <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-            <li><a href="#"><span class="fa fa-dribbble"></span></a></li>
-          </ul>
         </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="person"> <%= image_tag("team-2.jpg", class: "img-responsive") %>
-          <div class="person-content">
-            <h4>Johnathan Deo</h4>
-            <h5 class="role">Creative head</h5>
-            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          </div>
-          <ul class="social-icons clearfix">
-            <li><a href="#" class=""><span class="fa fa-facebook"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-twitter"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-linkedin"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-google-plus"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-dribbble"></span></a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="person"> <%= image_tag("team-3.jpg", class: "img-responsive") %>
-          <div class="person-content">
-            <h4>Mike collins</h4>
-            <h5 class="role">Technical lead</h5>
-            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          </div>
-          <ul class="social-icons clearfix">
-            <li><a href="#" class=""><span class="fa fa-facebook"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-twitter"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-linkedin"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-google-plus"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-dribbble"></span></a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="person"> <%= image_tag("team-4.jpg", class: "img-responsive") %>
-          <div class="person-content">
-            <h4>Rita Rose</h4>
-            <h5 class="role">Marketing head</h5>
-            <p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          </div>
-          <ul class="social-icons clearfix">
-            <li><a href="#" class=""><span class="fa fa-facebook"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-twitter"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-linkedin"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-google-plus"></span></a></li>
-            <li><a href="#" class=""><span class="fa fa-dribbble"></span></a></li>
-          </ul>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </section>
@@ -205,43 +159,89 @@
 </section>
 <!-- contact section --> 
 
-<!-- Footer section -->
-<footer class="footer">
-  <div class="footer-top section">
-    <div class="container">
-      <div class="row">
-        <div class="footer-col col-md-6">
-          <h5>Our Office Location</h5>
-          <p>Collins Street West Victoria 8007 Australia.<br>
-            1800 1234 56789 / 98532100987<br>
-            support@lexis.com</p>
-          <p>Copyright © 2015 Lexis Inc. All Rights Reserved. Made with <i class="fa fa-heart pulse"></i> by <a href="http://www.designstub.com/">Designstub</a></p>
-        </div>
-        <div class="footer-col col-md-3">
-          <h5>Services We Offer</h5>
-          <p>
-          <ul>
-            <li><a href="#">Digital Strategy</a></li>
-            <li><a href="#">Websites</a></li>
-            <li><a href="#">Videography</a></li>
-            <li><a href="#">Social Media</a></li>
-            <li><a href="#">User Experience</a></li>
-          </ul>
-          </p>
-        </div>
-        <div class="footer-col col-md-3">
-          <h5>Share with Love</h5>
-          <ul class="footer-share">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-          </ul>
-        </div>
+
+
+<!-- Modal -->
+
+
+<!-- Modal -->
+<div class="modal fade animated rollIn" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cotações</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+  
+      <div class="col-xs-6">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              Valor na Compra
+          </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                  <div class="table-responsive">
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th>Moeda</th>
+                                  <th>Valor</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <!-- /.table-responsive -->
+              </div>
+              <!-- /.panel-body -->
+          </div>  
+
+        </div> 
+
+      <div class="col-xs-6">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              Valor na Venda
+          </div>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                  <div class="table-responsive">
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th>Moeda</th>
+                                  <th>Valor</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+                  <!-- /.table-responsive -->
+              </div>
+              <!-- /.panel-body -->
+          </div>  
+
+        </div> 
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
-  <!-- footer top --> 
-  
-</footer>
-<!-- Footer section --> 
+</div>

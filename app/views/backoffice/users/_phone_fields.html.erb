@@ -3,7 +3,7 @@
         <div class="form-group">
           <div class="col-xs-5">
               <label>Telefone</label>
-              <%= f.text_field :number, class: 'form-control', placeholder: '(xx) xxxx-xxxx' %>
+              <%= f.text_field :number, class: 'form-control mask-phone', placeholder: '(xx) x xxxx-xxxx' %>
           </div>
             <%= link_to_remove_association('<span class="glyphicon glyphicon-remove botao-remover"></span>'.html_safe, f) %>
         </div>

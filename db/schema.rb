@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009041718) do
+ActiveRecord::Schema.define(version: 20171019015158) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "state"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171009041718) do
     t.string   "neighborhood"
     t.integer  "number"
     t.integer  "customer_id"
+    t.integer  "company_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -40,6 +41,18 @@ ActiveRecord::Schema.define(version: 20171009041718) do
   add_index "buys", ["currency_out_id"], name: "index_buys_on_currency_out_id"
   add_index "buys", ["customer_id"], name: "index_buys_on_customer_id"
   add_index "buys", ["user_id"], name: "index_buys_on_user_id"
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "youtube"
+    t.string   "facebook"
+    t.string   "google"
+    t.string   "twitter"
+    t.string   "about_us"
+  end
 
   create_table "currencies", force: :cascade do |t|
     t.string   "name"
@@ -64,6 +77,11 @@ ActiveRecord::Schema.define(version: 20171009041718) do
     t.integer  "customer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sells", force: :cascade do |t|

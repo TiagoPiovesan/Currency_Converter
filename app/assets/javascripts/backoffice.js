@@ -4,36 +4,44 @@
 //= require bootbox
 //= require cocoon
 //= require bootstrap.growl
+//= require jquery-mask
+
+$(document).ready(function() {
+
+  // Mascaras
+  $('.mask-phone').mask('(00) 0 0000-0000')
+  $('.mask-cpf').mask('000.000.000-00');
+  $('.mask-cep').mask('00000-000');
 
 
-//Sobrescreve data-confirm do Rails
-$.rails.allowAction = function(element) {
-  var message = element.attr('data-confirm');
-  if (!message) { return true; }
+  //Sobrescreve data-confirm do Rails
+  $.rails.allowAction = function(element) {
+    var message = element.attr('data-confirm');
+    if (!message) { return true; }
 
-  var opts = {
-    title: "Confirmação",
-    message: message,
-    buttons: {
-        confirm: {
-            label: 'Sim',
-            className: 'btn-success'
-        },
-        cancel: {
-            label: 'Não',
-            className: 'btn-danger'
+    var opts = {
+      title: "Confirmação",
+      message: message,
+      buttons: {
+          confirm: {
+              label: 'Sim',
+              className: 'btn-success'
+          },
+          cancel: {
+              label: 'Não',
+              className: 'btn-danger'
+          }
+      },
+      callback: function(result) {
+        if (result) {
+          element.removeAttr('data-confirm');
+          element.trigger('click.rails')
         }
-    },
-    callback: function(result) {
-      if (result) {
-        element.removeAttr('data-confirm');
-        element.trigger('click.rails')
       }
-    }
-  };
+    };
 
-  bootbox.confirm(opts);
+    bootbox.confirm(opts);
 
-  return false;
-}
-
+    return false;
+  }
+});

@@ -1,0 +1,34 @@
+<table class="table">
+    <tr>
+      <td><b>Nome:</b></td>
+      <td><%= @company.name %></td>
+    </tr>
+    <tr>
+      <td><b>Endereço:</b></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Estado:</td>
+      <td><%= @company.address.state %></td>
+    </tr>
+    <tr>
+      <td>Cidade:</td>
+      <td><%= @company.address.city %></td>
+    </tr>
+    <tr>
+      <td>CEP:</td>
+      <td><%= @company.address.zipcode %></td>
+    </tr>
+    <tr>
+      <td>Rua:</td>
+      <td><%= @company.address.street %></td>
+    </tr>
+    <tr>
+      <td>Numero:</td>
+      <td><%= @company.address.number %></td>
+    </tr>
+</table>
+
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

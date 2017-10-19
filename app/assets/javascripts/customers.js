@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
         $("#customer_address_attributes_street").val("");

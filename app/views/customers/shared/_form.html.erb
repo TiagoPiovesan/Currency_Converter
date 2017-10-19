@@ -24,7 +24,7 @@
 
                             <div class="form-group">
                                 <label>CPF</label>
-                                <%= f.text_field :cpf, class: 'form-control', placeholder: 'CPF, ex: 100.078.059-97' %>
+                                <%= f.text_field :cpf, class: 'form-control mask-cpf', placeholder: 'CPF, ex: 100.078.059-97' %>
                             </div>
 
 
@@ -58,7 +58,7 @@
                                           <div class="panel-body">
                                               <div class="form-group">
                                                   <label>CEP</label>
-                                                  <%= addresses_fields.text_field :zipcode, class: 'form-control', placeholder: 'CEP, ex: 89940-000' %>
+                                                  <%= addresses_fields.text_field :zipcode, class: 'form-control mask-cep', placeholder: 'CEP, ex: 89940-000' %>
                                               </div>
                                               <div class="form-group">
                                                   <label>Estado</label>
@@ -105,3 +105,4 @@
 <!-- /.row -->
 
 
+<%= javascript_include_tag 'customers' %>

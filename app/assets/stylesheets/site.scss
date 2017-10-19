@@ -5,6 +5,10 @@
  *= require_self
 */
 
+.modal-dialog{
+  width: 60%;
+}
+
 $cor-paragrafo: #6c7279;
 $cor-branca: #fff;
 $titulos: #2d3033;
@@ -158,6 +162,7 @@ ul li {
 }
 .navigation {
   float: right;
+  margin-top: 8px;
 }
 .navigation li {
   display: inline-block;

@@ -10,7 +10,7 @@ class ReportController < BackofficeController
       @sells = Sell.where("date(created_at) = ?", param_search)
       @amount = @sells.size
     else
-      @sells = Sell.all.order(:created_at)
+      @sells = Sell.all.order(:created_at).limit(50)
     end
   end
 
@@ -21,7 +21,7 @@ class ReportController < BackofficeController
       @buys = Buy.where("date(created_at) = ?", param_search)
       @amount = @buys.size
     else
-      @buys = Buy.all.order(:created_at)
+      @buys = Buy.all.order(:created_at).limit(50)
     end
   end
 

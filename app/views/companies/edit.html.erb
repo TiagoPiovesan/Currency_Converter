@@ -1,0 +1,118 @@
+<div class="row">
+  <h1 class="page-header">Informações da empresa</h1>
+</div>
+
+<%= render partial: 'layouts/shared/notification_error', locals: { modelo: @company } %>
+
+
+<%= form_for(@company) do |f| %>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <%= f.text_field :name, class: 'form-control' %>
+                        </div>
+
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <%= f.text_field :email, class: 'form-control' %>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+
+                     <div class="col-xs-12 col-sm-5">
+                        <div id="addresses">
+                            <%= f.fields_for :address do |addresses_fields| %>
+                                  <fieldset>
+                                      <legend>Endereço</legend>
+                                      <div class="panel-body">
+                                          <div class="form-group">
+                                              <label>CEP</label>
+                                              <%= addresses_fields.text_field :zipcode, class: 'form-control mask-cep', placeholder: 'CEP, ex: 89940-000' %>
+                                          </div>
+                                          <div class="form-group">
+                                              <label>Estado</label>
+                                              <%= addresses_fields.text_field :state, class: 'form-control', placeholder: 'Estado' %>
+                                          </div>
+                                          <div class="form-group">
+                                              <label>Cidade</label>
+                                              <%= addresses_fields.text_field :city, class: 'form-control', placeholder: 'Cidade' %>
+                                          </div>
+                                          <div class="form-group">
+                                              <label>Bairro</label>
+                                              <%= addresses_fields.text_field :neighborhood, class: 'form-control', placeholder: 'Ex: Centro, Santo Antônio' %>
+                                          </div>
+                                          <div class="form-group">
+                                              <label>Rua</label>
+                                              <%= addresses_fields.text_field :street, class: 'form-control', placeholder: 'Rua, ex: Rua Lauro José' %>
+                                          </div>
+                                          <div class="form-group">
+                                              <label>Número</label>
+                                              <%= addresses_fields.text_field :number, class: 'form-control', placeholder: 'Número, ex: 101' %>
+                                          </div>
+                                      </div>
+                                  </fieldset>
+                            <% end %>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-offset-1 col-sm-5">
+                        <fieldset>
+                          <legend>Redes sociais</legend>
+                          <div class="panel-body">
+                            <div class="form-group">
+                                <label>Facebook</label>
+                                <%= f.text_field :facebook, class: 'form-control' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Youtube</label>
+                                <%= f.text_field :youtube, class: 'form-control' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Twitter</label>
+                                <%= f.text_field :twitter, class: 'form-control' %>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Google+</label>
+                                <%= f.text_field :google, class: 'form-control' %>
+                            </div>
+                          </div>
+                       </fieldset>
+                     </div>
+
+                    </div>
+
+                  <div class="col-xs-12">
+                    <legend>Sobre nós</legend>
+                      <%= f.text_area :about_us, class: 'form-control', rows: '6' %>
+                  </div>
+
+                  <div class="col-xs-12">
+                      <div class="form-group">
+                         <%= f.submit 'Salvar', class: 'btn btn-default' %>
+                         <%= link_to "Cancelar", backoffice_dashboard_path, class: "btn btn-default" %>
+                         <% end %>
+                    </div>
+                  </div>
+
+                    <!-- /.col-lg-6 (nested) -->
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->

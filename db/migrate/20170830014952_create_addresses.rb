@@ -8,6 +8,8 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :neighborhood
       t.integer :number
       t.references :customer, foreign_key: true
+      t.references  "company", foreign_key: true
+
 
       t.timestamps null: false
     end

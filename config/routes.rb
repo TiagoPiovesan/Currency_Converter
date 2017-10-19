@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :companies
   # Rotas site
   namespace :site do
     get 'home/index'
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     root 'dashboard#index'
     get 'dashboard' => 'dashboard#index'
     resources :users
+    resources :companies
   end
 
   root 'site/home#index'
