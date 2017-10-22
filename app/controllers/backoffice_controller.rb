@@ -5,7 +5,6 @@ class BackofficeController < ApplicationController
 
   before_action :authenticate_user!
 
-
   private
 
     def set_currencies
@@ -13,3 +12,9 @@ class BackofficeController < ApplicationController
     end
     
 end
+
+
+
+
+
+

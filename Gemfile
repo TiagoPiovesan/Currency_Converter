@@ -31,6 +31,7 @@ gem 'groupdate'
 # Easy upload management for ActiveRecord
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
+
 source 'https://rails-assets.org' do
   # Touch enabled, responsive and fully customizable jQuery lightbox script
   gem 'rails-assets-fancyBox'
@@ -91,8 +92,11 @@ group :development do
   gem 'pry', '~> 0.10.4'
   # create exemples datas
   gem 'faker'
+  # gerara pdf com as associoações
   gem 'rails-erd'
-
+  # Catches mail and serves it through a dream. http://mailcatcher.me
+  gem 'mailcatcher'
+  # gera cpf e validações
   gem "cpf_cnpj"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

@@ -50,11 +50,13 @@
                                 <i class="fa fa-dashboard fa-fw"></i> Dashboard
                             <% end %>
                         </li>
-                        <li>
-                            <%= link_to edit_company_path(1) do %> 
-                                <i class="fa fa-building fa-fw"></i> Empresa
-                            <% end %>
-                        </li>
+                        <%if current_user.role?  %>
+                            <li>
+                                <%= link_to edit_company_path(1) do %> 
+                                    <i class="fa fa-building fa-fw"></i> Empresa
+                                <% end %>
+                            </li>
+                        <% end %>
                         <li>
                             <%= link_to backoffice_users_path do %> 
                                 <i class="fa fa-users fa-fw"></i> Administradores

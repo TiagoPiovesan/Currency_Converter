@@ -9,7 +9,7 @@ class SellsController < BackofficeController
   # GET /sells
   # GET /sells.json
   def index
-    @sells = Sell.all.page(params[:page]).per(30)
+    @sells = Sell.all.page(params[:page]).per(30).order(id: :desc)
   end
 
   # GET /sells/1
@@ -30,13 +30,16 @@ class SellsController < BackofficeController
   # POST /sells.json
   def create
     # calculando taxas + percentual
-    out_value = calculation_sell
+    new_out_value = calculation_sell
 
     @sell = Sell.new(sell_params)
-    @sell.value_out = out_value
+
+    # atribuindo o calculo ao campo vazio
+    @sell.value_out = new_out_value
 
     respond_to do |format|
       if @sell.save
+        SaleMailer.sell_email(current_user, @sell.customer).deliver_now
         format.html { redirect_to @sell, notice: 'Venda criada com sucesso.' }
         format.json { render :show, status: :created, location: @sell }
       else
@@ -76,10 +79,15 @@ class SellsController < BackofficeController
 
   def export
 
-    GeneratePdf::sell(@sell.user.name, @sell.customer.name, @sell.value_input, @sell.value_out, 
+    GeneratePdf::sell(
+                      @sell.user.name, 
+                      @sell.customer.name, 
+                      @sell.value_input, 
+                      @sell.value_out, 
                       @sell.currency_input_id,
                       @sell.currency_out_id,
-                      @sell.created_at, @sell.updated_at)
+                      @sell.created_at, @sell.updated_at
+                      )
 
     redirect_to "/pdf/venda_#{(DateTime.now).strftime('%d-%m-%y_%H-%M-%S')}.pdf"
 
@@ -110,7 +118,13 @@ class SellsController < BackofficeController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sell_params
-      params.require(:sell).permit(:user_id, :customer_id, :value_input, :currency_input_id, :currency_out_id)
+      params.require(:sell).permit(
+        :user_id, 
+        :customer_id, 
+        :value_input, 
+        :currency_input_id, 
+        :currency_out_id
+      )
     end
 
     def calculation_sell
@@ -118,15 +132,6 @@ class SellsController < BackofficeController
       currency_input_id = params[:sell][:currency_input_id]
       currency_out_id = params[:sell][:currency_out_id]
 
-      unless currency_input_id == "" or currency_out_id == ""
-
-        currency_input = @currencies.find(currency_input_id).price.to_f
-        currency_output = @currencies.find(currency_out_id).price.to_f 
-
-        currency_output = Currency.sell_calculator(currency_output)
-
-        out_value = (value_input.to_f * currency_input) / currency_output
-        out_value
-      end
+      Sell.calculate_output(value_input, currency_input_id, currency_out_id)
     end
 end
