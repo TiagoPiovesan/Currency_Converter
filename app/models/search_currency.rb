@@ -54,13 +54,15 @@ class Search_currency
   end
 
   def self.adicionar_no_model(name,value)
+
     array_length = name.size
     for i in 0..array_length -1
       aux = value[i].gsub(',', '.')[2,8]
 
       Currency.create(id: i, name: name[i], price: aux)
     end
+
     #adicionando Moeda: Real
-    Currency.create(id: 18, name: "Real", price: "1.000")
+    Currency.create(id: 30, name: "Real", price: "1.000")
   end
 end

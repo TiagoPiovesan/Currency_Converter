@@ -29,17 +29,29 @@ class SellsController < BackofficeController
   # POST /sells
   # POST /sells.json
   def create
-    # calculando taxas + percentual
-    new_out_value = calculation_sell
-
     @sell = Sell.new(sell_params)
-
-    # atribuindo o calculo ao campo vazio
-    @sell.value_out = new_out_value
+    # calculando taxas + percentual e atribuindo a variavel
+    @sell.value_out = calculation_sell
 
     respond_to do |format|
       if @sell.save
-        SaleMailer.sell_email(current_user, @sell.customer).deliver_now
+        # se salvar, então envie o email
+
+        currency_input = Currency.find(@sell.currency_input_id).name
+        currency_out   = Currency.find(@sell.currency_out_id).name
+
+        SaleMailer.sell_email(
+
+          current_user, 
+          @sell.customer, 
+          currency_input,
+          currency_out,
+          @sell.value_input,
+          @sell.value_out,
+          @sell.created_at
+
+          ).deliver_now
+
         format.html { redirect_to @sell, notice: 'Venda criada com sucesso.' }
         format.json { render :show, status: :created, location: @sell }
       else
@@ -53,8 +65,7 @@ class SellsController < BackofficeController
   # PATCH/PUT /sells/1.json
   def update
     # calculando taxas + percentual
-    out_value = calculation_sell
-    @sell.value_out = out_value
+    @sell.value_out = calculation_sell
 
     respond_to do |format|
       if @sell.update(sell_params)
@@ -86,12 +97,13 @@ class SellsController < BackofficeController
                       @sell.value_out, 
                       @sell.currency_input_id,
                       @sell.currency_out_id,
-                      @sell.created_at, @sell.updated_at
+                      @sell.created_at, 
+                      @sell.updated_at
                       )
 
     redirect_to "/pdf/venda_#{(DateTime.now).strftime('%d-%m-%y_%H-%M-%S')}.pdf"
-
   end
+
 
   private
 
@@ -128,10 +140,10 @@ class SellsController < BackofficeController
     end
 
     def calculation_sell
-      value_input = params[:sell][:value_input]
-      currency_input_id = params[:sell][:currency_input_id]
-      currency_out_id = params[:sell][:currency_out_id]
-
-      Sell.calculate_output(value_input, currency_input_id, currency_out_id)
+      Sell.calculate_output(
+        params[:sell][:value_input], 
+        params[:sell][:currency_input_id], 
+        params[:sell][:currency_out_id]
+      )
     end
 end

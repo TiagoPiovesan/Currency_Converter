@@ -110,9 +110,10 @@ puts "Cadastrando Compras"
               customer: Customer.all.sample, 
               value_input: @value_input = Random.rand(50..1200), 
               value_out: Currency.buy_calculator(@value_input), 
-              currency_input_id: Random.rand(0..18), 
+              currency_input_id: Random.rand(0..18),
               currency_out_id: Random.rand(0..18),
-              created_at: Date.today - Random.rand(0..30) )
+              created_at: Date.today - Random.rand(0..30) 
+            )
 end
 
 puts "Compras Cadastradas"
@@ -128,7 +129,8 @@ puts "Cadastrando vendas"
                value_out: Currency.buy_calculator(@value_input_sell), 
                currency_input_id: Random.rand(0..18),
                currency_out_id: Random.rand(0..18),
-               created_at: Date.today - Random.rand(0..30) )
+               created_at: Date.today - Random.rand(0..30) 
+              )
 end
 
 puts "vendas Cadastradas"
